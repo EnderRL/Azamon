@@ -2,24 +2,26 @@ package IA;
 
 import IA.Azamon.Paquete;
 
-import java.util.TreeSet;
+import java.util.TreeMap;
 
-public class PaqueSet extends TreeSet<Paquete> {
+public class PaqueSet extends TreeMap<Integer,Paquete> {
      private int peso = 0;
 
     @Override
-    public boolean add(Paquete paquete) {
+    public Paquete put(Integer i, Paquete paquete) {
+        Paquete paquete1 = super.put(i, paquete);
         peso += paquete.getPeso();
-        return super.add(paquete);
+        if (paquete1 != null) peso -= paquete1.getPeso();
+        return paquete1;
     }
 
     @Override
-    public boolean remove(Object paquete) {
-        if(super.remove(paquete)){
-            peso -= ((Paquete)paquete).getPeso();
-            return true;
+    public Paquete remove(Object paquete) {
+        Paquete paquete1 = super.remove(paquete);
+        if(paquete1 != null) {
+            peso -= paquete1.getPeso();
         }
-        return false;
+        return paquete1;
     }
 
     public int getPeso() {
