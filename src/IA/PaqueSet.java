@@ -5,7 +5,7 @@ import IA.Azamon.Paquete;
 import java.util.TreeMap;
 
 public class PaqueSet extends TreeMap<Integer,Paquete> {
-     private int peso = 0;
+     private double peso = 0;
 
     @Override
     public Paquete put(Integer i, Paquete paquete) {
@@ -24,7 +24,7 @@ public class PaqueSet extends TreeMap<Integer,Paquete> {
         return paquete1;
     }
 
-    public int getPeso() {
+    public double getPeso() {
         return peso;
     }
 }

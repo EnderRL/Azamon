@@ -2,25 +2,16 @@ package IA;
 
 import IA.Azamon.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
 public class Estado {
-    private int felicidad, precio;
+    private double felicidad, precio;
 
     private ArrayList<PaqueSet> paquetesOfertados;
 
-    public static void setOfertas(Transporte ofertas) {
-        Estado.ofertas = ofertas;
-    }
-
-    public static void setPaquetes(Paquetes paquetes) {
-        Estado.paquetes = paquetes;
-    }
-
-    public static Transporte ofertas;
-    public static Paquetes paquetes;
+    private static Transporte ofertas;
+    private static Paquetes paquetes;
 
 
     public Estado(ArrayList<PaqueSet> paquetesOfertados, int felicidad, int precio) {
@@ -34,16 +25,16 @@ public class Estado {
         System.out.println("Hola soy la funcion metePaquete y estoy metiendo el paquete " + paquete);
         ArrayList<Integer> conjuntoOfertas = new ArrayList<>(ofertas.size());
         for (int i = 0; i < ofertas.size(); ++i) conjuntoOfertas.add(i);
-        System.out.println(conjuntoOfertas.size());
         while (conjuntoOfertas.size() > 0) {
-            int transporteRandom = random.nextInt()%conjuntoOfertas.size();
+            int transporteRandom = random.nextInt(conjuntoOfertas.size());
+            System.out.println(transporteRandom + " " + conjuntoOfertas.size());
             Paquete paqueteRandom = paquetes.get(paquete);
-            Oferta ofertaRandom = ofertas.get(transporteRandom);
-            PaqueSet paquetesOferta = paquetesOfertados.get(transporteRandom);
-            System.out.println(paqueteRandom + "\n" + ofertaRandom);
+            Oferta ofertaRandom = ofertas.get(conjuntoOfertas.get(transporteRandom));
+            PaqueSet paquetesOferta = paquetesOfertados.get(conjuntoOfertas.get(transporteRandom));
             if (paquetesOferta.getPeso() + paqueteRandom.getPeso() <= ofertaRandom.getPesomax()){
                 paquetesOferta.put(paquete,paqueteRandom);
                 if(!metePaquete(paquete + 1,random)){
+                    System.out.println("ma");
                     paquetesOferta.remove(paquete);
                     conjuntoOfertas.remove(transporteRandom);
                 }
@@ -63,11 +54,11 @@ public class Estado {
         metePaquete(0, random);
     }
 
-    public int getFelicidad() {
+    public double getFelicidad() {
         return felicidad;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
@@ -80,12 +71,20 @@ public class Estado {
         String s = "";
         s += "Numero de paquetes: " + paquetesOfertados.size() + "\n";
         for (int i = 0; i < paquetesOfertados.size(); ++i) {
-            s += "Oferta numero " + i + "con peso maximo " + paquetesOfertados.get(i).getPeso() + "/" + ofertas.get(i).getPesomax() + ":\n";
+            s += "Oferta numero " + i + " con peso maximo " + paquetesOfertados.get(i).getPeso() + "/" + ofertas.get(i).getPesomax() + ":\n";
             for (Map.Entry<Integer,Paquete> p : paquetesOfertados.get(i).entrySet()) {
-                s += "\t" +  p.getValue().toString() + "\n";
+                s += "\t" +  p.getValue() + "\n";
             }
         }
         return s;
+    }
+
+    public static void setOfertas(Transporte ofertas) {
+        Estado.ofertas = ofertas;
+    }
+
+    public static void setPaquetes(Paquetes paquetes) {
+        Estado.paquetes = paquetes;
     }
 
 }
