@@ -18,9 +18,7 @@ public class PaqueSet extends TreeMap<Integer,Paquete> {
     @Override
     public Paquete remove(Object paquete) {
         Paquete paquete1 = super.remove(paquete);
-        if(paquete1 != null) {
-            peso -= paquete1.getPeso();
-        }
+        if(paquete1 != null) peso -= paquete1.getPeso();
         return paquete1;
     }
 

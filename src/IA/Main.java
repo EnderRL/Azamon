@@ -9,15 +9,11 @@ public class Main {
         System.out.println("Creando paquetes. :D");
         Paquetes paquetes = new Paquetes(8, 0);
         System.out.println("Creando transportes. :D:D");
-
-        Transporte ofertas = new Transporte(paquetes, 0.25, 0);
+        Transporte ofertas = new Transporte(paquetes, 1, 0);
         Estado.setOfertas(ofertas);
         Estado.setPaquetes(paquetes);
         Estado estado = new Estado(0);
         System.out.println(estado);
-
-
-
     }
 }
 

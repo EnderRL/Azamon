@@ -27,14 +27,12 @@ public class Estado {
         for (int i = 0; i < ofertas.size(); ++i) conjuntoOfertas.add(i);
         while (conjuntoOfertas.size() > 0) {
             int transporteRandom = random.nextInt(conjuntoOfertas.size());
-            System.out.println(transporteRandom + " " + conjuntoOfertas.size());
             Paquete paqueteRandom = paquetes.get(paquete);
             Oferta ofertaRandom = ofertas.get(conjuntoOfertas.get(transporteRandom));
             PaqueSet paquetesOferta = paquetesOfertados.get(conjuntoOfertas.get(transporteRandom));
             if (paquetesOferta.getPeso() + paqueteRandom.getPeso() <= ofertaRandom.getPesomax()){
                 paquetesOferta.put(paquete,paqueteRandom);
                 if(!metePaquete(paquete + 1,random)){
-                    System.out.println("ma");
                     paquetesOferta.remove(paquete);
                     conjuntoOfertas.remove(transporteRandom);
                 }
@@ -69,9 +67,9 @@ public class Estado {
     @Override
     public String toString() {
         String s = "";
-        s += "Numero de paquetes: " + paquetesOfertados.size() + "\n";
+        s += "Número de ofertas de transporte: " + paquetesOfertados.size() + "\n";
         for (int i = 0; i < paquetesOfertados.size(); ++i) {
-            s += "Oferta numero " + i + " con peso maximo " + paquetesOfertados.get(i).getPeso() + "/" + ofertas.get(i).getPesomax() + ":\n";
+            s += "Oferta número " + i + " con peso " + paquetesOfertados.get(i).getPeso() + "/" + ofertas.get(i).getPesomax() + ":\n";
             for (Map.Entry<Integer,Paquete> p : paquetesOfertados.get(i).entrySet()) {
                 s += "\t" +  p.getValue() + "\n";
             }
