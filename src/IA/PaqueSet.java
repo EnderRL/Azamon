@@ -5,7 +5,7 @@ import IA.Azamon.Paquete;
 import java.util.TreeSet;
 
 public class PaqueSet extends TreeSet<Paquete> {
-     private int peso;
+     private int peso = 0;
 
     @Override
     public boolean add(Paquete paquete) {
