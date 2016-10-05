@@ -35,6 +35,35 @@ public class Estado {
         return false;
     }
 
+    private double calculaPrecio(int numeroOferta, Paquete p) {
+        double precioPaquete = 0;
+        switch (ofertas.get(numeroOferta).getDias()) {
+            case 3:
+                precioPaquete += 0.25*p.getPeso();
+                break;
+            case 4:
+                precioPaquete += 0.25*p.getPeso();
+                break;
+            case 5:
+                precioPaquete += 0.5*p.getPeso();
+                break;
+            default:
+        }
+        precioPaquete += ofertas.get(numeroOferta).getPrecio()*p.getPeso();
+        return precioPaquete;
+    }
+
+    private int calculaFelicidad(int numeroOferta, Paquete p) {
+        int felicidad = 0;
+        if (p.getPrioridad() == Paquete.PR2) {
+            felicidad += 3-ofertas.get(numeroOferta).getDias();
+        }
+        else if (p.getPrioridad() == Paquete.PR3) {
+            felicidad += 5-ofertas.get(numeroOferta).getDias();
+        }
+        return felicidad;
+    }
+
     private boolean metePaquete(int paqueteI, Random random, ArrayList<PaqueteInteger> paquetesOrdenados) {
         if (paqueteI == paquetes.size()) return true;
         Paquete paquete = paquetesOrdenados.get(paqueteI).getPaquete();
@@ -43,6 +72,7 @@ public class Estado {
         for (int i = 0; i < ofertas.size(); ++i) {
             if (paquetesOfertados.get(i).getPeso() + paquete.getPeso() <= ofertas.get(i).getPesomax() && calculaDias(paquete.getPrioridad()+1, ofertas.get(i).getDias())) {
                 conjuntoOfertas.add(i);
+
             }
         }
         /*if (conjuntoOfertas.size() == 0) {
@@ -53,10 +83,16 @@ public class Estado {
         }*/
         while (conjuntoOfertas.size() > 0) {
             int transporteRandom = random.nextInt(conjuntoOfertas.size());
-            PaqueMap paquetesOferta = paquetesOfertados.get(conjuntoOfertas.get(transporteRandom));
+            int ofertaEscogida = conjuntoOfertas.get(transporteRandom);
+            PaqueMap paquetesOferta = paquetesOfertados.get(ofertaEscogida);
             paquetesOferta.put(paqueteI, paquete);
+            //Calculo del precio
+            precio += calculaPrecio(ofertaEscogida,paquete);
+            felicidad += calculaFelicidad(ofertaEscogida,paquete);
             if(metePaquete(paqueteI + 1,random, paquetesOrdenados)) return  true;
             paquetesOferta.remove(paqueteI);
+            precio -= calculaPrecio(ofertaEscogida,paquete);
+            felicidad -= calculaFelicidad(ofertaEscogida,paquete);
             conjuntoOfertas.remove(transporteRandom);
         }
         return false;
