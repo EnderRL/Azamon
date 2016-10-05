@@ -1,10 +1,8 @@
 package IA;
 
 import IA.Azamon.*;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
+
+import java.util.*;
 
 public class Estado {
     private double precio;
@@ -37,27 +35,27 @@ public class Estado {
         return false;
     }
 
-    private boolean metePaquete(int paqueteI, Random random) {
+    private boolean metePaquete(int paqueteI, Random random, ArrayList<PaqueteInteger> paquetesOrdenados) {
         if (paqueteI == paquetes.size()) return true;
-        Paquete paquete = paquetes.get(paqueteI);
+        Paquete paquete = paquetesOrdenados.get(paqueteI).getPaquete();
+        //System.out.println("Paquete número " + paqueteI + ": " + paquete);
         ArrayList<Integer> conjuntoOfertas = new ArrayList<>(ofertas.size());
         for (int i = 0; i < ofertas.size(); ++i) {
             if (paquetesOfertados.get(i).getPeso() + paquete.getPeso() <= ofertas.get(i).getPesomax() && calculaDias(paquete.getPrioridad()+1, ofertas.get(i).getDias())) {
                 conjuntoOfertas.add(i);
             }
         }
-        if (conjuntoOfertas.size() == 0) {
+        /*if (conjuntoOfertas.size() == 0) {
             System.out.println("Mala situación del paquete " + paqueteI + ": " + paquete);
             System.out.print(toString());
             Scanner sc = new Scanner(System.in);
             sc.next();
-        }
+        }*/
         while (conjuntoOfertas.size() > 0) {
             int transporteRandom = random.nextInt(conjuntoOfertas.size());
-            Oferta ofertaRandom = ofertas.get(conjuntoOfertas.get(transporteRandom));
             PaqueMap paquetesOferta = paquetesOfertados.get(conjuntoOfertas.get(transporteRandom));
             paquetesOferta.put(paqueteI, paquete);
-            if(metePaquete(paqueteI + 1,random)) return  true;
+            if(metePaquete(paqueteI + 1,random, paquetesOrdenados)) return  true;
             paquetesOferta.remove(paqueteI);
             conjuntoOfertas.remove(transporteRandom);
         }
@@ -70,8 +68,17 @@ public class Estado {
             paquetesOfertados.add(new PaqueMap());
         }
         Random random = new Random(seed);
-        System.out.println("El numero de paquetes es " + paquetes.size() + " i el numero de ofertas es " + ofertas.size());
-        metePaquete(0, random);
+        ArrayList<PaqueteInteger> paquetesOrdenados = new ArrayList<>(paquetes.size());
+        for (int i = 0; i < paquetes.size(); ++i) {
+            paquetesOrdenados.add(new PaqueteInteger(i, paquetes.get(i)));
+        }
+        paquetesOrdenados.sort((o1, o2) -> {
+            int comparacion = Integer.compare(o1.getPrioridad(), o2.getPrioridad());
+            if (comparacion == 0) return Integer.compare(o1.getIndice(), o2.getIndice());
+            return comparacion;
+        });
+        if (metePaquete(0, random, paquetesOrdenados)) System.out.println("Success");
+        else System.out.println("Failure");
     }
 
     public double getFelicidad() {
