@@ -55,10 +55,10 @@ public class Estado {
 
     private int calculaFelicidad(int numeroOferta, Paquete p) {
         int felicidad = 0;
-        if (p.getPrioridad() == Paquete.PR2) {
+        if (p.getPrioridad() == Paquete.PR2-1) {
             felicidad += 3-ofertas.get(numeroOferta).getDias();
         }
-        else if (p.getPrioridad() == Paquete.PR3) {
+        else if (p.getPrioridad() == Paquete.PR3-1) {
             felicidad += 5-ofertas.get(numeroOferta).getDias();
         }
         return felicidad;
@@ -132,9 +132,9 @@ public class Estado {
     @Override
     public String toString() {
         String s = "";
-        s += "Número de ofertas de transporte: " + paquetesOfertados.size() + "\n";
+        s += "Número de ofertas de transporte: " + paquetesOfertados.size() + " || Felicidad: " + felicidad + " || Precio: " + precio + "\n";
         for (int i = 0; i < paquetesOfertados.size(); ++i) {
-            s += "Oferta número " + i + " con peso " + paquetesOfertados.get(i).getPeso() + "/" + ofertas.get(i).getPesomax() + " i con dias de entrega " + ofertas.get(i).getDias() +  ":\n";
+            s += "Oferta número " + i + " con peso " + paquetesOfertados.get(i).getPeso() + "/" + ofertas.get(i).getPesomax() + ", con dias de entrega " + ofertas.get(i).getDias() +  " y con precio: " + ofertas.get(i).getPrecio() + ":\n";
             for (Map.Entry<Integer,Paquete> p : paquetesOfertados.get(i).entrySet()) {
                 s += "\t" +  p.getValue() + "\n";
             }
