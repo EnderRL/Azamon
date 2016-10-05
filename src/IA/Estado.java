@@ -3,6 +3,7 @@ package IA;
 import IA.Azamon.*;
 
 import java.util.*;
+import java.util.concurrent.TransferQueue;
 
 public class Estado {
     private double precio;
@@ -11,6 +12,9 @@ public class Estado {
     private ArrayList<PaqueMap> paquetesOfertados;
 
     private static Transporte ofertas;
+
+
+
     private static Paquetes paquetes;
 
 
@@ -20,7 +24,7 @@ public class Estado {
         this.precio = precio;
     }
 
-    private boolean calculaDias(int prioridad, int diasEntrega) {
+    public static boolean calculaDias(int prioridad, int diasEntrega) {
         switch (prioridad) {
             case Paquete.PR1:
                 return diasEntrega == 1;
@@ -135,7 +139,7 @@ public class Estado {
         for (int i = 0; i < paquetesOfertados.size(); ++i) {
             s += "Oferta número " + i + " con peso " + paquetesOfertados.get(i).getPeso() + "/" + ofertas.get(i).getPesomax() + ", con dias de entrega " + ofertas.get(i).getDias() +  " y con precio: " + ofertas.get(i).getPrecio() + ":\n";
             for (Map.Entry<Integer,Paquete> p : paquetesOfertados.get(i).entrySet()) {
-                s += "\t" +  p.getValue() + "\n";
+                s += "\tIndice: " + p.getKey() + " " +  p.getValue() + "\n";
             }
         }
         return s;
@@ -148,5 +152,9 @@ public class Estado {
     public static void setPaquetes(Paquetes paquetes) {
         Estado.paquetes = paquetes;
     }
+
+    public static Paquetes getPaquetes() { return paquetes; }
+
+    public static Transporte getOfertas() { return ofertas; }
 
 }
