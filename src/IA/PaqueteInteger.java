@@ -2,8 +2,6 @@ package IA;
 
 import IA.Azamon.Paquete;
 
-import java.util.IdentityHashMap;
-
 public class PaqueteInteger implements Comparable<PaqueteInteger> {
 
     private int indice;

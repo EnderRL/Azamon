@@ -1,7 +1,6 @@
 package IA;
-import IA.Azamon.Paquete;
 
-import java.util.Objects;
+import IA.Azamon.Paquete;
 import java.util.TreeMap;
 
 public class PaqueMap extends TreeMap<Integer, Paquete> {

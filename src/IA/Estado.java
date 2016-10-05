@@ -67,7 +67,6 @@ public class Estado {
     private boolean metePaquete(int paqueteI, Random random, ArrayList<PaqueteInteger> paquetesOrdenados) {
         if (paqueteI == paquetes.size()) return true;
         Paquete paquete = paquetesOrdenados.get(paqueteI).getPaquete();
-        //System.out.println("Paquete número " + paqueteI + ": " + paquete);
         ArrayList<Integer> conjuntoOfertas = new ArrayList<>(ofertas.size());
         for (int i = 0; i < ofertas.size(); ++i) {
             if (paquetesOfertados.get(i).getPeso() + paquete.getPeso() <= ofertas.get(i).getPesomax() && calculaDias(paquete.getPrioridad()+1, ofertas.get(i).getDias())) {

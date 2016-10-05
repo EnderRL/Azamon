@@ -5,9 +5,6 @@ import IA.Azamon.Paquete;
 
 import java.util.ArrayList;
 
-/**
- * Created by Fanz0 on 05/10/2016.
- */
 public class GeneradorSucesores  {
 
     private ArrayList<Estado> sucesores;
