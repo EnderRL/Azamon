@@ -4,6 +4,7 @@ import IA.Azamon.*;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Estado {
     private double precio;
@@ -26,9 +27,9 @@ public class Estado {
             case Paquete.PR1:
                 return diasEntrega == 1;
             case Paquete.PR2:
-                return diasEntrega == 2 || diasEntrega == 3;
+                return diasEntrega <= 3;
             case Paquete.PR3:
-                return diasEntrega == 4 || diasEntrega == 5;
+                return diasEntrega <= 5;
             default:
                 System.out.println("Prioridad incorrecta." + prioridad);
 
@@ -36,34 +37,32 @@ public class Estado {
         return false;
     }
 
-    private boolean metePaquete(int paquete, Random random) {
-        if (paquete == paquetes.size()) return true;
-        //System.out.println("Hola soy la funcion metePaquete y estoy metiendo el paquete " + paquete);
+    private boolean metePaquete(int paqueteI, Random random) {
+        if (paqueteI == paquetes.size()) return true;
+        Paquete paquete = paquetes.get(paqueteI);
         ArrayList<Integer> conjuntoOfertas = new ArrayList<>(ofertas.size());
-        for (int i = 0; i < ofertas.size(); ++i) conjuntoOfertas.add(i);
+        for (int i = 0; i < ofertas.size(); ++i) {
+            if (paquetesOfertados.get(i).getPeso() + paquete.getPeso() <= ofertas.get(i).getPesomax() && calculaDias(paquete.getPrioridad()+1, ofertas.get(i).getDias())) {
+                conjuntoOfertas.add(i);
+            }
+        }
+        if (conjuntoOfertas.size() == 0) {
+            System.out.println("Mala situación del paquete " + paqueteI + ": " + paquete);
+            System.out.print(toString());
+            Scanner sc = new Scanner(System.in);
+            sc.next();
+        }
         while (conjuntoOfertas.size() > 0) {
-            //System.out.println("Estoy en el while i conjunto ofertas.size es " + conjuntoOfertas.size());
             int transporteRandom = random.nextInt(conjuntoOfertas.size());
-            Paquete paqueteRandom = paquetes.get(paquete);
             Oferta ofertaRandom = ofertas.get(conjuntoOfertas.get(transporteRandom));
             PaqueMap paquetesOferta = paquetesOfertados.get(conjuntoOfertas.get(transporteRandom));
-            if ((paquetesOferta.getPeso() + paqueteRandom.getPeso() <= ofertaRandom.getPesomax()) /*&& calculaDias(paqueteRandom.getPrioridad()+1, ofertaRandom.getDias())*/){
-                paquetesOferta.put(paquete, paqueteRandom);
-                if(!metePaquete(paquete + 1,random)) {
-                    paquetesOferta.remove(paquete);
-                    conjuntoOfertas.remove(transporteRandom);
-                }
-                else return true;
-            }
-            else conjuntoOfertas.remove(transporteRandom);
+            paquetesOferta.put(paqueteI, paquete);
+            if(metePaquete(paqueteI + 1,random)) return  true;
+            paquetesOferta.remove(paqueteI);
+            conjuntoOfertas.remove(transporteRandom);
         }
         return false;
     }
-
-   /* private boolean metePaquete(int oferta, Random random, PaqueSet paquetesNoAsig) {
-        if (paquetesNoAsig.isEmpty()) return true;
-
-    }*/
 
     public Estado(int seed) {
         paquetesOfertados = new ArrayList<>(ofertas.size());
