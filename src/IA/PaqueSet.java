@@ -1,25 +1,30 @@
 package IA;
-
 import IA.Azamon.Paquete;
 
-import java.util.TreeMap;
+import java.util.Objects;
+import java.util.TreeSet;
 
-public class PaqueSet extends TreeMap<Integer,Paquete> {
+
+public class PaqueSet extends TreeSet<PaqueteInteger> {
      private double peso = 0;
 
     @Override
-    public Paquete put(Integer i, Paquete paquete) {
-        Paquete paquete1 = super.put(i, paquete);
-        peso += paquete.getPeso();
-        if (paquete1 != null) peso -= paquete1.getPeso();
-        return paquete1;
+    public boolean add(PaqueteInteger paquete) {
+        if (super.add(paquete)) {
+            peso += paquete.getPeso();
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public Paquete remove(Object paquete) {
-        Paquete paquete1 = super.remove(paquete);
-        if(paquete1 != null) peso -= paquete1.getPeso();
-        return paquete1;
+    public boolean remove(Object paquete) {
+        if (super.remove(paquete)) {
+            peso -= ((PaqueteInteger)paquete).getPeso();
+            return true;
+        }
+
+        return false;
     }
 
     public double getPeso() {
