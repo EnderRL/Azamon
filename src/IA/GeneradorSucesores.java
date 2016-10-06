@@ -33,7 +33,7 @@ public class GeneradorSucesores  {
         Paquete paquete1 = Estado.getPaquetes().get(indicePaquete1);
         Paquete paquete2 = Estado.getPaquetes().get(indicePaquete2);
         if (paquete1.getPeso() + paquetesOferta2.getPeso() - paquete2.getPeso() <= oferta2.getPesomax() && paquete2.getPeso() + paquetesOferta1.getPeso() - paquete1.getPeso() <= oferta1.getPesomax() &&
-                Estado.calculaDias(paquete1.getPrioridad()+1,oferta1.getDias()) &&  Estado.calculaDias(paquete2.getPrioridad()+1,oferta2.getDias())) {
+                Estado.calculaDias(paquete1.getPrioridad()+1,oferta1.getDias()) &&  Estado.calculaDias(paquete2.getPrioridad(),oferta2.getDias())) {
             paquetesOferta1.remove(paquete1);
             paquetesOferta2.put(indicePaquete1,paquete1);
             paquetesOferta2.remove(paquete2);
