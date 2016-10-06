@@ -59,10 +59,10 @@ public class Estado {
 
     private int calculaFelicidad(int numeroOferta, Paquete p) {
         int felicidad = 0;
-        if (p.getPrioridad() == Paquete.PR2-1) {
+        if (p.getPrioridad() == Paquete.PR2) {
             felicidad += 3-ofertas.get(numeroOferta).getDias();
         }
-        else if (p.getPrioridad() == Paquete.PR3-1) {
+        else if (p.getPrioridad() == Paquete.PR3) {
             felicidad += 5-ofertas.get(numeroOferta).getDias();
         }
         return felicidad;
@@ -73,7 +73,7 @@ public class Estado {
         Paquete paquete = paquetesOrdenados.get(paqueteI).getPaquete();
         ArrayList<Integer> conjuntoOfertas = new ArrayList<>(ofertas.size());
         for (int i = 0; i < ofertas.size(); ++i) {
-            if (paquetesOfertados.get(i).getPeso() + paquete.getPeso() <= ofertas.get(i).getPesomax() && calculaDias(paquete.getPrioridad()+1, ofertas.get(i).getDias())) {
+            if (paquetesOfertados.get(i).getPeso() + paquete.getPeso() <= ofertas.get(i).getPesomax() && calculaDias(paquete.getPrioridad(), ofertas.get(i).getDias())) {
                 conjuntoOfertas.add(i);
 
             }
