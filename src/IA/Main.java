@@ -18,6 +18,7 @@ public class Main {
 
         System.out.println("Empiezo el intercambio");
         GeneradorSucesores generadorSucesores = new GeneradorSucesores(estado);
+        System.out.println(estado);
     }
 }
 

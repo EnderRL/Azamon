@@ -9,7 +9,11 @@ public class Estado {
     private double precio;
     private int felicidad;
 
-    private ArrayList<PaqueMap> paquetesOfertados;
+    private ArrayList<Integer> asignacionPaquetes;
+
+
+
+    private ArrayList<Double> pesoOfertas;
 
     private static Transporte ofertas;
 
@@ -18,8 +22,9 @@ public class Estado {
     private static Paquetes paquetes;
 
 
-    public Estado(ArrayList<PaqueMap> paquetesOfertados, int felicidad, int precio) {
-        this.paquetesOfertados = paquetesOfertados;
+    public Estado(ArrayList<Integer> asignacionPaquetes, ArrayList<Double> pesoOfertas, int felicidad, int precio) {
+        this.asignacionPaquetes = asignacionPaquetes;
+        this.pesoOfertas = pesoOfertas;
         this.felicidad = felicidad;
         this.precio = precio;
     }
@@ -73,9 +78,8 @@ public class Estado {
         Paquete paquete = paquetesOrdenados.get(paqueteI).getPaquete();
         ArrayList<Integer> conjuntoOfertas = new ArrayList<>(ofertas.size());
         for (int i = 0; i < ofertas.size(); ++i) {
-            if (paquetesOfertados.get(i).getPeso() + paquete.getPeso() <= ofertas.get(i).getPesomax() && calculaDias(paquete.getPrioridad(), ofertas.get(i).getDias())) {
+            if (pesoOfertas.get(i) + paquete.getPeso() <= ofertas.get(i).getPesomax() && calculaDias(paquete.getPrioridad(), ofertas.get(i).getDias())) {
                 conjuntoOfertas.add(i);
-
             }
         }
         /*if (conjuntoOfertas.size() == 0) {
@@ -87,13 +91,14 @@ public class Estado {
         while (conjuntoOfertas.size() > 0) {
             int transporteRandom = random.nextInt(conjuntoOfertas.size());
             int ofertaEscogida = conjuntoOfertas.get(transporteRandom);
-            PaqueMap paquetesOferta = paquetesOfertados.get(ofertaEscogida);
-            paquetesOferta.put(paqueteI, paquete);
+            asignacionPaquetes.set(paquetesOrdenados.get(paqueteI).getIndice(),ofertaEscogida);
+            pesoOfertas.set(ofertaEscogida,pesoOfertas.get(ofertaEscogida)+paquete.getPeso());
             //Calculo del precio
             precio += calculaPrecio(ofertaEscogida,paquete);
             felicidad += calculaFelicidad(ofertaEscogida,paquete);
             if(metePaquete(paqueteI + 1,random, paquetesOrdenados)) return  true;
-            paquetesOferta.remove(paqueteI);
+            asignacionPaquetes.set(paqueteI,-1);
+            pesoOfertas.set(ofertaEscogida,pesoOfertas.get(ofertaEscogida)-paquete.getPeso());
             precio -= calculaPrecio(ofertaEscogida,paquete);
             felicidad -= calculaFelicidad(ofertaEscogida,paquete);
             conjuntoOfertas.remove(transporteRandom);
@@ -102,9 +107,13 @@ public class Estado {
     }
 
     public Estado(int seed) {
-        paquetesOfertados = new ArrayList<>(ofertas.size());
+        pesoOfertas = new ArrayList<>(ofertas.size());
         for (int i = 0; i < ofertas.size(); ++i) {
-            paquetesOfertados.add(new PaqueMap());
+            pesoOfertas.add(0.0);
+        }
+        asignacionPaquetes = new ArrayList<>(paquetes.size());
+        for (int i = 0; i < paquetes.size(); ++i) {
+            asignacionPaquetes.add(-1);
         }
         Random random = new Random(seed);
         ArrayList<PaqueteInteger> paquetesOrdenados = new ArrayList<>(paquetes.size());
@@ -128,18 +137,22 @@ public class Estado {
         return precio;
     }
 
-    public ArrayList<PaqueMap> getPaquetesOfertados() {
-        return paquetesOfertados;
+    public ArrayList<Integer> getAsignacionPaquetes() {
+        return asignacionPaquetes;
+    }
+
+    public ArrayList<Double> getPesoOfertas() {
+        return pesoOfertas;
     }
 
     @Override
     public String toString() {
         String s = "";
-        s += "Número de ofertas de transporte: " + paquetesOfertados.size() + " || Felicidad: " + felicidad + " || Precio: " + precio + "\n";
-        for (int i = 0; i < paquetesOfertados.size(); ++i) {
-            s += "Oferta número " + i + " con peso " + paquetesOfertados.get(i).getPeso() + "/" + ofertas.get(i).getPesomax() + ", con dias de entrega " + ofertas.get(i).getDias() +  " y con precio: " + ofertas.get(i).getPrecio() + ":\n";
-            for (Map.Entry<Integer,Paquete> p : paquetesOfertados.get(i).entrySet()) {
-                s += "\tIndice: " + p.getKey() + " " +  p.getValue() + "\n";
+        s += "Número de ofertas de transporte: " + pesoOfertas.size() + " || Felicidad: " + felicidad + " || Precio: " + precio + "\n";
+        for (int i = 0; i < ofertas.size(); ++i) {
+            s += "Oferta número " + i + " con peso " + pesoOfertas.get(i) + "/" + ofertas.get(i).getPesomax() + ", con dias de entrega " + ofertas.get(i).getDias() +  " y con precio: " + ofertas.get(i).getPrecio() + ":\n";
+            for (int p = 0; p < asignacionPaquetes.size(); ++p) {
+                if( asignacionPaquetes.get(p) == i) s += "\tIndice: " + p + " " +  paquetes.get(p) + "\n";
             }
         }
         return s;
