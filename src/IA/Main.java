@@ -15,10 +15,8 @@ public class Main {
         Estado estado = new Estado((int)Parametros.seed);
         System.out.println("Final");
         System.out.println(estado);
-
-        System.out.println("Empiezo el intercambio");
-        GeneradorSucesores generadorSucesores = new GeneradorSucesores(estado);
-        System.out.println(estado);
+        GeneradorSucesores generadorSucesores = new GeneradorSucesores();
+        System.out.println(generadorSucesores.getSuccessors(estado).iterator().next());
     }
 }
 

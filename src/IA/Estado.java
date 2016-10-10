@@ -22,7 +22,7 @@ public class Estado {
     private static Paquetes paquetes;
 
 
-    public Estado(ArrayList<Integer> asignacionPaquetes, ArrayList<Double> pesoOfertas, int felicidad, int precio) {
+    public Estado(ArrayList<Integer> asignacionPaquetes, ArrayList<Double> pesoOfertas, int felicidad, double precio) {
         this.asignacionPaquetes = asignacionPaquetes;
         this.pesoOfertas = pesoOfertas;
         this.felicidad = felicidad;
@@ -44,7 +44,7 @@ public class Estado {
         return false;
     }
 
-    private double calculaPrecio(int numeroOferta, Paquete p) {
+    public static double calculaPrecio(int numeroOferta, Paquete p) {
         double precioPaquete = 0;
         switch (ofertas.get(numeroOferta).getDias()) {
             case 3:
@@ -62,7 +62,7 @@ public class Estado {
         return precioPaquete;
     }
 
-    private int calculaFelicidad(int numeroOferta, Paquete p) {
+    public static int calculaFelicidad(int numeroOferta, Paquete p) {
         int felicidad = 0;
         if (p.getPrioridad() == Paquete.PR2) {
             felicidad += 3-ofertas.get(numeroOferta).getDias();
@@ -129,7 +129,7 @@ public class Estado {
         else System.out.println("Failure");
     }
 
-    public double getFelicidad() {
+    public int getFelicidad() {
         return felicidad;
     }
 
