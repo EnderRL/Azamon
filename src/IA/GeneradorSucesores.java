@@ -4,6 +4,7 @@ import IA.Azamon.Oferta;
 import IA.Azamon.Paquete;
 import aima.search.framework.SuccessorFunction;
 import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,12 +19,12 @@ public class GeneradorSucesores implements SuccessorFunction {
     private boolean moverPaquete(int indicePaquete, int indiceOferta) {
         Paquete paquete = Estado.getPaquetes().get(indicePaquete);
         int indiceOfertaActual = asignacionPaquetes.get(indicePaquete);
-        Oferta oferta = Estado.getOfertas().get(indiceOfertaActual);
+        Oferta oferta = Estado.getOfertas().get(indiceOferta);
 
-        if (pesoOfertas.get(indiceOfertaActual) + paquete.getPeso() <= oferta.getPesomax() && Estado.calculaDias(paquete.getPrioridad(), oferta.getDias())) {
-            pesoOfertas.set(indiceOferta, pesoOfertas.get(indiceOferta) - paquete.getPeso());
-            pesoOfertas.set(indiceOfertaActual, pesoOfertas.get(indiceOfertaActual) + paquete.getPeso());
-            asignacionPaquetes.set(indicePaquete, indiceOfertaActual);
+        if (pesoOfertas.get(indiceOferta) + paquete.getPeso() <= oferta.getPesomax() && Estado.calculaDias(paquete.getPrioridad(), oferta.getDias())) {
+            pesoOfertas.set(indiceOfertaActual, pesoOfertas.get(indiceOfertaActual) - paquete.getPeso());
+            pesoOfertas.set(indiceOferta, pesoOfertas.get(indiceOferta) + paquete.getPeso());
+            asignacionPaquetes.set(indicePaquete, indiceOferta);
             //ACTUALIZA FELICIDAD
             felicidad = felicidad - Estado.calculaFelicidad(indiceOfertaActual,paquete) + Estado.calculaFelicidad(indiceOferta,paquete);
             //ACTUALIZA PRECIO
@@ -66,18 +67,6 @@ public class GeneradorSucesores implements SuccessorFunction {
         felicidad = estadoPadre.getFelicidad();
         precio = estadoPadre.getPrecio();
         LinkedList<Estado> sucesores = new LinkedList<>();
-        //OPERADOR MOVER
-        for (int i = 0; i < Estado.getPaquetes().size(); ++i) {
-            int ofertaPaqueteActual = asignacionPaquetes.get(i);
-            for (int j = 0; j < Estado.getOfertas().size(); ++j) {
-                if (j != ofertaPaqueteActual) {
-                    if (moverPaquete(i, j)) {
-                        sucesores.add(new Estado(asignacionPaquetes,pesoOfertas,felicidad,precio));
-                        moverPaquete(i,ofertaPaqueteActual);
-                    }
-                }
-            }
-        }
         //OPERADOR INTERCAMBIAR
         for (int i = 0; i < Estado.getPaquetes().size(); ++i) {
             int indiceOfertaPaquete1 =  asignacionPaquetes.get(i);
@@ -85,10 +74,21 @@ public class GeneradorSucesores implements SuccessorFunction {
                 int indiceOfertaPaquete2 = asignacionPaquetes.get(j);
                 if (indiceOfertaPaquete1 != indiceOfertaPaquete2) {
                     if (intercambiaPaquete(i, j)) {
-                        sucesores.add(new Estado(asignacionPaquetes,pesoOfertas,felicidad,precio));
+                        sucesores.add(new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio));
                         intercambiaPaquete(j, i);
                     }
-                    else System.out.println("Fail aprende a programar " + i + " " + j);
+                }
+            }
+        }
+        //OPERADOR MOVER
+        for (int i = 0; i < Estado.getPaquetes().size(); ++i) {
+            int ofertaPaqueteActual = asignacionPaquetes.get(i);
+            for (int j = 0; j < Estado.getOfertas().size(); ++j) {
+                if (j != ofertaPaqueteActual) {
+                    if (moverPaquete(i, j)) {
+                        sucesores.add(new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio));
+                        moverPaquete(i,ofertaPaqueteActual);
+                    }
                 }
             }
         }

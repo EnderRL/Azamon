@@ -2,6 +2,7 @@ package IA;
 
 import IA.Azamon.*;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.concurrent.TransferQueue;
 
@@ -10,17 +11,10 @@ public class Estado {
     private int felicidad;
 
     private ArrayList<Integer> asignacionPaquetes;
-
-
-
     private ArrayList<Double> pesoOfertas;
 
     private static Transporte ofertas;
-
-
-
     private static Paquetes paquetes;
-
 
     public Estado(ArrayList<Integer> asignacionPaquetes, ArrayList<Double> pesoOfertas, int felicidad, double precio) {
         this.asignacionPaquetes = asignacionPaquetes;
@@ -82,12 +76,6 @@ public class Estado {
                 conjuntoOfertas.add(i);
             }
         }
-        /*if (conjuntoOfertas.size() == 0) {
-            System.out.println("Mala situación del paquete " + paqueteI + ": " + paquete);
-            System.out.print(toString());
-            Scanner sc = new Scanner(System.in);
-            sc.next();
-        }*/
         while (conjuntoOfertas.size() > 0) {
             int transporteRandom = random.nextInt(conjuntoOfertas.size());
             int ofertaEscogida = conjuntoOfertas.get(transporteRandom);
@@ -105,6 +93,39 @@ public class Estado {
         }
         return false;
     }
+
+    private boolean metePaqueteAlternativo(ArrayList<PaqueteInteger> paquetesOrdenados, ArrayList<OfertaInteger> ofertasOrdenadas) {
+        ArrayList<Boolean> arrayBool = new ArrayList<>(Collections.nCopies(paquetesOrdenados.size(),false));
+        for(int i = 0; i < ofertasOrdenadas.size();++i){
+            Oferta oferta = ofertasOrdenadas.get(i).getOferta();
+            int indiceOferta =  ofertasOrdenadas.get(i).getIndice();
+            //System.out.println("Analizando oferta " + indiceOferta + " " + oferta);
+            for (int j = 0; j < paquetes.size(); ++j) {
+                Paquete paquete = paquetesOrdenados.get(j).getPaquete();
+                int indicePaquete = paquetesOrdenados.get(j).getIndice();
+                //System.out.println("Analizando paquete " + indicePaquete + " " + paquete);
+                if (calculaDias(paquete.getPrioridad(), oferta.getDias()) && oferta.getPesomax() >= pesoOfertas.get(indiceOferta)+paquete.getPeso() && !arrayBool.get(indicePaquete)) {
+                    //System.out.println("He acertado");
+                    arrayBool.set(indicePaquete, true);
+                    asignacionPaquetes.set(indicePaquete, indiceOferta);
+                    pesoOfertas.set(indiceOferta, pesoOfertas.get(indiceOferta) + paquete.getPeso());
+                    precio += calculaPrecio(indiceOferta, paquete);
+                    felicidad += calculaFelicidad(indiceOferta, paquete);
+                }
+                /*else{
+                    System.out.print("He fallado porque ");
+                    if (oferta.getPesomax() < pesoOfertas.get(indiceOferta)+paquete.getPeso()) System.out.println("pesa demasiado");
+                    else if (!calculaDias(paquete.getPrioridad(), oferta.getDias())) System.out.println("tarda demasiado");
+                    else System.out.println("ya estaba puesto");
+                }*/
+            }
+        }
+        for(int i = 0; i< asignacionPaquetes.size();++i){
+            if(asignacionPaquetes.get(i) == -1) return false;
+        }
+        return true;
+    }
+
 
     public Estado(int seed) {
         pesoOfertas = new ArrayList<>(ofertas.size());
@@ -127,6 +148,36 @@ public class Estado {
         });
         if (metePaquete(0, random, paquetesOrdenados)) System.out.println("Success");
         else System.out.println("Failure");
+    }
+
+    public Estado() {
+        pesoOfertas = new ArrayList<>(ofertas.size());
+        for (int i = 0; i < ofertas.size(); ++i) {
+            pesoOfertas.add(0.0);
+        }
+        asignacionPaquetes = new ArrayList<>(paquetes.size());
+        for (int i = 0; i < paquetes.size(); ++i) {
+            asignacionPaquetes.add(-1);
+        }
+        ArrayList<PaqueteInteger> paquetesOrdenados = new ArrayList<>(paquetes.size());
+        for (int i = 0; i < paquetes.size(); ++i) {
+            paquetesOrdenados.add(new PaqueteInteger(i, paquetes.get(i)));
+        }
+        paquetesOrdenados.sort((o1, o2) -> {
+            int comparacion = Integer.compare(o1.getPrioridad(), o2.getPrioridad());
+            if (comparacion == 0) return Integer.compare(o1.getIndice(), o2.getIndice());
+            return comparacion;
+        });
+        ArrayList<OfertaInteger> ofertasOrdenadas = new ArrayList<>(ofertas.size());
+        for (int i = 0; i < ofertas.size(); ++i) {
+            ofertasOrdenadas.add(new OfertaInteger(i, ofertas.get(i)));
+        }
+        ofertasOrdenadas.sort((o1, o2) -> {
+            int comparacion = Integer.compare(o1.getOferta().getDias(), o2.getOferta().getDias());
+            if (comparacion == 0) return Integer.compare(o1.getIndice(), o2.getIndice());
+            return comparacion;
+        });
+        if(!metePaqueteAlternativo(paquetesOrdenados,ofertasOrdenadas)) System.out.println("AYY LMAO");
     }
 
     public int getFelicidad() {
