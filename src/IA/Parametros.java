@@ -1,5 +1,5 @@
 package IA;
 
 public class Parametros {
-    final static long seed = System.nanoTime();
+    final static int seed = (int)System.nanoTime();
 }

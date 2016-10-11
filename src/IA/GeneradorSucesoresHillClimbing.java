@@ -2,13 +2,14 @@ package IA;
 
 import IA.Azamon.Oferta;
 import IA.Azamon.Paquete;
+import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
 import java.util.ArrayList;
 import java.util.DoubleSummaryStatistics;
 import java.util.LinkedList;
 import java.util.List;
 
-public class GeneradorSucesores implements SuccessorFunction {
+public class GeneradorSucesoresHillClimbing implements SuccessorFunction {
     private Estado estadoPadre;
     private ArrayList<Double> pesoOfertas;
     private ArrayList<Integer> asignacionPaquetes;
@@ -66,7 +67,7 @@ public class GeneradorSucesores implements SuccessorFunction {
         pesoOfertas = estadoPadre.getPesoOfertas();
         felicidad = estadoPadre.getFelicidad();
         precio = estadoPadre.getPrecio();
-        LinkedList<Estado> sucesores = new LinkedList<>();
+        LinkedList<Successor> sucesores = new LinkedList<>();
         //OPERADOR INTERCAMBIAR
         for (int i = 0; i < Estado.getPaquetes().size(); ++i) {
             int indiceOfertaPaquete1 =  asignacionPaquetes.get(i);
@@ -74,7 +75,7 @@ public class GeneradorSucesores implements SuccessorFunction {
                 int indiceOfertaPaquete2 = asignacionPaquetes.get(j);
                 if (indiceOfertaPaquete1 != indiceOfertaPaquete2) {
                     if (intercambiaPaquete(i, j)) {
-                        sucesores.add(new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio));
+                        sucesores.add(new Successor("He intercambiado el paquete " + i + " con el paquete " + j,new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio)));
                         intercambiaPaquete(j, i);
                     }
                 }
@@ -86,7 +87,7 @@ public class GeneradorSucesores implements SuccessorFunction {
             for (int j = 0; j < Estado.getOfertas().size(); ++j) {
                 if (j != ofertaPaqueteActual) {
                     if (moverPaquete(i, j)) {
-                        sucesores.add(new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio));
+                        sucesores.add(new Successor("He movido el paquete " + i + " a la oferta " + j,new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio)));
                         moverPaquete(i,ofertaPaqueteActual);
                     }
                 }
