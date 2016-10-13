@@ -97,7 +97,7 @@ public class SimulatedAnnealingSearch extends NodeExpander implements Search {
         //   status = "not completed";
         //	}
 
-      //  ret = SearchUtils.actionsFromNodes(best.getPathFromRoot());
+        ret = SearchUtils.actionsFromNodes(best.getPathFromRoot());
         ret.add(goalState);
         //  int coste = -getValue(best, p);
         // ret.add(status + "\nFinal state = " + best.getState()+" Coste= "+coste);

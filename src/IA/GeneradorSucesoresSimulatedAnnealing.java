@@ -2,6 +2,7 @@ package IA;
 
 import IA.Azamon.Oferta;
 import IA.Azamon.Paquete;
+import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
 import aima.util.Pair;
 
@@ -30,9 +31,9 @@ public class GeneradorSucesoresSimulatedAnnealing implements SuccessorFunction {
             pesoOfertas.set(indiceOferta, pesoOfertas.get(indiceOferta) + paquete.getPeso());
             asignacionPaquetes.set(indicePaquete, indiceOferta);
             //ACTUALIZA FELICIDAD
-            felicidad = felicidad - Estado.calculaFelicidad(indiceOfertaActual,paquete) + Estado.calculaFelicidad(indiceOferta,paquete);
+            felicidad = estadoPadre.getFelicidad() - Estado.calculaFelicidad(indiceOfertaActual,paquete) + Estado.calculaFelicidad(indiceOferta,paquete);
             //ACTUALIZA PRECIO
-            precio = precio - Estado.calculaPrecio(indiceOfertaActual,paquete) + Estado.calculaPrecio(indiceOferta,paquete);
+            precio = estadoPadre.getPrecio() - Estado.calculaPrecio(indiceOfertaActual,paquete) + Estado.calculaPrecio(indiceOferta,paquete);
             return true;
         }
         return false;
@@ -54,9 +55,9 @@ public class GeneradorSucesoresSimulatedAnnealing implements SuccessorFunction {
             asignacionPaquetes.set(indicePaquete1, indiceOferta2);
             asignacionPaquetes.set(indicePaquete2, indiceOferta1);
             //ACTUALIZA FELICIDAD
-            felicidad = felicidad - Estado.calculaFelicidad(indiceOferta1,paquete1) + Estado.calculaFelicidad(indiceOferta2,paquete1)  - Estado.calculaFelicidad(indiceOferta2,paquete2) + Estado.calculaFelicidad(indiceOferta1,paquete2);
+            felicidad = estadoPadre.getFelicidad() - Estado.calculaFelicidad(indiceOferta1,paquete1) + Estado.calculaFelicidad(indiceOferta2,paquete1)  - Estado.calculaFelicidad(indiceOferta2,paquete2) + Estado.calculaFelicidad(indiceOferta1,paquete2);
             //ACTUALIZA PRECIO
-            precio = precio - Estado.calculaPrecio(indiceOferta1,paquete1) + Estado.calculaPrecio(indiceOferta2,paquete1) - Estado.calculaPrecio(indiceOferta2,paquete2) + Estado.calculaPrecio(indiceOferta1,paquete2);
+            precio = estadoPadre.getPrecio() - Estado.calculaPrecio(indiceOferta1,paquete1) + Estado.calculaPrecio(indiceOferta2,paquete1) - Estado.calculaPrecio(indiceOferta2,paquete2) + Estado.calculaPrecio(indiceOferta1,paquete2);
 
             return true;
         }
@@ -74,35 +75,8 @@ public class GeneradorSucesoresSimulatedAnnealing implements SuccessorFunction {
         pesoOfertas = estadoPadre.getPesoOfertas();
         felicidad = estadoPadre.getFelicidad();
         precio = estadoPadre.getPrecio();
-        LinkedList<Estado> sucesores = new LinkedList<>();
+        LinkedList<Successor> sucesores = new LinkedList<>();
         boolean success = false;
-
-        /*ArrayList<Pair> conjuntoPaquetesenOfertas = new ArrayList<>(Estado.getPaquetes().size());
-        for (int i = 0; i < Estado.getPaquetes().size(); ++i) {
-            ArrayList<Integer> aux = new ArrayList<>();
-            Pair pair = new Pair(i, aux);
-            Paquete paquete = Estado.getPaquetes().get(i);
-            for (int j = 0; j < Estado.getOfertas().size(); ++j) {
-                Oferta oferta = Estado.getOfertas().get(j);
-                if (pesoOfertas.get(j) + paquete.getPeso() <= oferta.getPesomax() && Estado.calculaDias(paquete.getPrioridad(), oferta.getDias())) {
-                    aux.add(j);
-                }
-            }
-            conjuntoPaquetesenOfertas.add(pair);
-        }
-
-        ArrayList<Pair> conjuntoPaquetesConPaquetes = new ArrayList<>(Estado.getPaquetes().size());
-        for (int i = 0; i < Estado.getPaquetes().size(); ++i) {
-            ArrayList<Integer> aux = new ArrayList<>();
-            Pair pair = new Pair(i, aux);
-            Paquete paquete1 = Estado.getPaquetes().get(i);
-            for (int j = 0; j < Estado.getPaquetes().size(); ++j) {
-                Paquete paquete2 = Estado.getPaquetes().get(j);
-                if (paquete1.getPeso() + pesoOfertas.get(indiceOferta2) - paquete2.getPeso() <= oferta2.getPesomax() && paquete2.getPeso() + pesoOfertas.get(indiceOferta1) - paquete1.getPeso() <= oferta1.getPesomax() &&
-                        Estado.calculaDias(paquete1.getPrioridad(), oferta2.getDias()) && Estado.calculaDias(paquete2.getPrioridad(), oferta1.getDias())) {
-            }
-            conjuntoPaquetesenOfertas.add(pair);
-        }*/
 
         while (!success) {
             if (random.nextInt(2) == 0) {
@@ -110,7 +84,8 @@ public class GeneradorSucesoresSimulatedAnnealing implements SuccessorFunction {
                 int oferta = random.nextInt(Estado.getOfertas().size());
                 int paquete = random.nextInt(Estado.getPaquetes().size());
                 if (asignacionPaquetes.get(paquete) != oferta && moverPaquete(paquete, oferta)) {
-                    sucesores.add(new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio));
+                    String action = "He movido el paquete " + paquete + " a la oferta " + oferta + " felicidad " + felicidad + "/" + estadoPadre.getFelicidad() + " precio " + precio + "\n";
+                    sucesores.add(new Successor(action, new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio)));
                     success = true;
                 }
             } else {
@@ -118,7 +93,8 @@ public class GeneradorSucesoresSimulatedAnnealing implements SuccessorFunction {
                 int paquete1 = random.nextInt(Estado.getPaquetes().size());
                 int paquete2 = random.nextInt(Estado.getPaquetes().size());
                 if (!asignacionPaquetes.get(paquete1).equals(asignacionPaquetes.get(paquete2)) && intercambiaPaquete(paquete1, paquete2)) {
-                    sucesores.add(new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio));
+                    String action = "He intercambiado el paquete " + paquete1 + " con el paquete " + paquete2 + " felicidad " + felicidad + "/" + estadoPadre.getFelicidad() + " precio " + precio + "/" + estadoPadre.getPrecio();
+                    sucesores.add(new Successor(action, new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio)));
                     success = true;
                 }
             }
