@@ -58,7 +58,6 @@ public class GeneradorSucesoresSimulatedAnnealing implements SuccessorFunction {
             felicidad = estadoPadre.getFelicidad() - Estado.calculaFelicidad(indiceOferta1,paquete1) + Estado.calculaFelicidad(indiceOferta2,paquete1)  - Estado.calculaFelicidad(indiceOferta2,paquete2) + Estado.calculaFelicidad(indiceOferta1,paquete2);
             //ACTUALIZA PRECIO
             precio = estadoPadre.getPrecio() - Estado.calculaPrecio(indiceOferta1,paquete1) + Estado.calculaPrecio(indiceOferta2,paquete1) - Estado.calculaPrecio(indiceOferta2,paquete2) + Estado.calculaPrecio(indiceOferta1,paquete2);
-
             return true;
         }
         return false;
@@ -71,35 +70,38 @@ public class GeneradorSucesoresSimulatedAnnealing implements SuccessorFunction {
     @Override
     public List getSuccessors(Object state) {
         estadoPadre = (Estado)state;
-        asignacionPaquetes = estadoPadre.getAsignacionPaquetes();
-        pesoOfertas = estadoPadre.getPesoOfertas();
+        asignacionPaquetes = (ArrayList<Integer>) estadoPadre.getAsignacionPaquetes().clone();
+        pesoOfertas = (ArrayList<Double>) estadoPadre.getPesoOfertas().clone();
         felicidad = estadoPadre.getFelicidad();
         precio = estadoPadre.getPrecio();
         LinkedList<Successor> sucesores = new LinkedList<>();
         boolean success = false;
-
+        Estado nextEstado = null;
+        String action = "";
         while (!success) {
             if (random.nextInt(2) == 0) {
                 //OPERADOR MOVER
                 int oferta = random.nextInt(Estado.getOfertas().size());
                 int paquete = random.nextInt(Estado.getPaquetes().size());
                 if (asignacionPaquetes.get(paquete) != oferta && moverPaquete(paquete, oferta)) {
-                    String action = "He movido el paquete " + paquete + " a la oferta " + oferta + " felicidad " + felicidad + "/" + estadoPadre.getFelicidad() + " precio " + precio + "\n";
-                    sucesores.add(new Successor(action, new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio)));
+                    action += "He movido el paquete " + paquete + " a la oferta " + oferta + "\n";
+                    nextEstado = new Estado(asignacionPaquetes,pesoOfertas,felicidad,precio);
                     success = true;
                 }
-            } else {
+            }
+            else {
                 //OPERADOR INTERCAMBIAR
                 int paquete1 = random.nextInt(Estado.getPaquetes().size());
                 int paquete2 = random.nextInt(Estado.getPaquetes().size());
                 if (!asignacionPaquetes.get(paquete1).equals(asignacionPaquetes.get(paquete2)) && intercambiaPaquete(paquete1, paquete2)) {
-                    String action = "He intercambiado el paquete " + paquete1 + " con el paquete " + paquete2 + " felicidad " + felicidad + "/" + estadoPadre.getFelicidad() + " precio " + precio + "/" + estadoPadre.getPrecio();
-                    sucesores.add(new Successor(action, new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio)));
+                    action += "He intercambiado el paquete " + paquete1+ " con el paquete " + paquete2 + "\n";
+                    nextEstado = new Estado(asignacionPaquetes,pesoOfertas,felicidad,precio);
                     success = true;
                 }
             }
         }
-
+        action += nextEstado.toString();
+        sucesores.add(new Successor(action, nextEstado));
         return sucesores;
     }
 }

@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] argv) {
         System.out.println("ESTO ES EL INICIO DE GLA2, que dominará el mundo");
         System.out.println("Creando paquetes. :D");
-        Paquetes paquetes = new Paquetes(10, Parametros.seed);
+        Paquetes paquetes = new Paquetes(100, Parametros.seed);
         System.out.println("Creando transportes. :D:D");
         Transporte ofertas = new Transporte(paquetes, 1.2, Parametros.seed);
         Estado.setOfertas(ofertas);
@@ -32,17 +32,19 @@ public class Main {
             SearchAgent agent = new SearchAgent(problemA, simulatedAnnealingSearch);
             System.out.println("Finished Simulated Annealing");
             System.out.println("Actions");
-            for (Object o : agent.getActions()) System.out.println(o);
+            /*for (int i = 0; i < 10; ++i) {
+                System.out.println(agent.getActions().get(i));
+            }*/
             System.out.println("Instrumentation");
             printInstrumentation(agent.getInstrumentation());
             System.out.println("Goal state Simulated Annealing");
             System.out.println(simulatedAnnealingSearch.getGoalState());
-            /*System.out.println("Starting Hill Climbing");
+            System.out.println("Starting Hill Climbing");
             List listH = hillClimbingSearch.search(problemH);
             System.out.println("Finished Hill Climbing");
-            for (Object o : listH) System.out.println(o);
+            //for (Object o : listH) System.out.println(o);
             System.out.println("Goal State Hill Climbing");
-            System.out.println(hillClimbingSearch.getGoalState());*/
+            System.out.println(hillClimbingSearch.getGoalState());
         } catch (Exception e) {
             e.printStackTrace();
         }
