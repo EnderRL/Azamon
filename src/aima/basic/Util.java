@@ -21,7 +21,7 @@ public class Util {
 	}
 
 	public static ArrayList range(int start, int end) {
-		ArrayList retVal = new ArrayList();
+		ArrayList retVal = new ArrayList(end-start+1);
 		for (int i = start; i <= end; i++) {
 			retVal.add(new Integer(i));
 		}
@@ -29,7 +29,7 @@ public class Util {
 	}
 
 	public static ArrayList getFilledArrayList(int size, int value) {
-		ArrayList retVal = new ArrayList();
+		ArrayList retVal = new ArrayList(size);
 		for (int i = 0; i < size; i++) {
 			retVal.add(new Integer(value));
 		}
