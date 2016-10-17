@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] argv) {
         System.out.println("ESTO ES EL INICIO DE GLA2, que dominará el mundo");
         System.out.println("Creando paquetes. :D");
-        Paquetes paquetes = new Paquetes(10, Parametros.seed);
+        Paquetes paquetes = new Paquetes(100, Parametros.seed);
         System.out.println("Creando transportes. :D:D");
         Transporte ofertas = new Transporte(paquetes, 1.2, Parametros.seed);
         Estado.setOfertas(ofertas);
@@ -37,7 +37,7 @@ public class Main {
         Problem problemAF = new Problem(estadoInicial, generadorSucesoresSimulatedAnnealing, state -> true, new FuncionHeuristicaFelicidad());
 
         HillClimbingSearch hillClimbingSearch = new HillClimbingSearch();
-        SimulatedAnnealingSearch simulatedAnnealingSearch = new SimulatedAnnealingSearch(2000, 100, 5, 0.001);
+        SimulatedAnnealingSearch simulatedAnnealingSearch = new SimulatedAnnealingSearch(4000, 100, 5, 0.001);
         System.out.println("Estado inicial: felicidad " + estadoInicial.getFelicidad() + ", precio " + estadoInicial.getPrecio());
         try {
             System.out.println("HEURISTICO NORMAL:");
@@ -51,7 +51,7 @@ public class Main {
             estadoFinal = (Estado)hillClimbingSearch.getGoalState();
             System.out.println("Finished Hill Climbing");
             System.out.println("Hill climbing: felicidad: " + estadoFinal.getFelicidad() + ", precio " + estadoFinal.getPrecio());
-            System.out.println(estadoFinal);
+            //System.out.println(estadoFinal);
 
             System.out.println("HEURISTICO PRECIO");
             System.out.println("Starting Simulated Annealing");
@@ -64,7 +64,7 @@ public class Main {
             estadoFinal = (Estado)hillClimbingSearch.getGoalState();
             System.out.println("Finished Hill Climbing");
             System.out.println("Hill climbing: felicidad: " + estadoFinal.getFelicidad() + ", precio " + estadoFinal.getPrecio());
-            System.out.println(estadoFinal);
+            //System.out.println(estadoFinal);
 
             System.out.println("HEURISTICO FELICIDAD");
             System.out.println("Starting Simulated Annealing");
@@ -77,7 +77,7 @@ public class Main {
             estadoFinal = (Estado)hillClimbingSearch.getGoalState();
             System.out.println("Finished Hill Climbing");
             System.out.println("Hill climbing: felicidad: " + estadoFinal.getFelicidad() + ", precio " + estadoFinal.getPrecio());
-            System.out.println(estadoFinal);
+            //System.out.println(estadoFinal);
 
             System.out.println("Estado inicial: felicidad " + estadoInicial.getFelicidad() + ", precio " + estadoInicial.getPrecio());
 

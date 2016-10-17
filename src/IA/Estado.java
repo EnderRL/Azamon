@@ -1,6 +1,7 @@
 package IA;
 
 import IA.Azamon.*;
+import aima.basic.Util;
 
 import java.lang.reflect.Array;
 import java.util.*;
@@ -132,10 +133,7 @@ public class Estado {
         for (int i = 0; i < ofertas.size(); ++i) {
             pesoOfertas.add(0.0);
         }
-        asignacionPaquetes = new ArrayList<>(paquetes.size());
-        for (int i = 0; i < paquetes.size(); ++i) {
-            asignacionPaquetes.add(-1);
-        }
+        asignacionPaquetes = Util.getFilledArrayList(paquetes.size(), -1);
         Random random = new Random(seed);
         ArrayList<PaqueteInteger> paquetesOrdenados = new ArrayList<>(paquetes.size());
         for (int i = 0; i < paquetes.size(); ++i) {
@@ -155,10 +153,8 @@ public class Estado {
         for (int i = 0; i < ofertas.size(); ++i) {
             pesoOfertas.add(0.0);
         }
-        asignacionPaquetes = new ArrayList<>(paquetes.size());
-        for (int i = 0; i < paquetes.size(); ++i) {
-            asignacionPaquetes.add(-1);
-        }
+        asignacionPaquetes = Util.getFilledArrayList(paquetes.size(), -1);
+
         ArrayList<PaqueteInteger> paquetesOrdenados = new ArrayList<>(paquetes.size());
         for (int i = 0; i < paquetes.size(); ++i) {
             paquetesOrdenados.add(new PaqueteInteger(i, paquetes.get(i)));
