@@ -68,7 +68,7 @@ public class SimulatedAnnealingSearch extends NodeExpander implements Search {
                 //System.out.print("deltaE = "+deltaE+"\n");
                 double al = rnd.nextDouble();
                 double prob = 1.0 / (1.0 + Math.exp(deltaE / temp));
-
+                if (deltaE <= 0.0) System.out.println(Math.exp(deltaE/temp));
                 if (trace && (deltaE < 0.0) && (al > prob)) {
                     System.out.println("Pr Acep=" + prob + " Delta E=" + deltaE + " Temp= " + temp);
                 }

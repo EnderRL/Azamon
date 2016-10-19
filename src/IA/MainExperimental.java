@@ -52,7 +52,6 @@ public class MainExperimental {
                         estadoMax = estadoFinal;
                     }
                     //System.out.println(estadoFinal);
-
             /*System.out.println("HEURISTICO PRECIO");
             System.out.println("Starting Simulated Annealing");
             agent = new SearchAgent(problemAP, simulatedAnnealingSearch);
@@ -71,6 +70,7 @@ public class MainExperimental {
                     e.printStackTrace();
                 }
             }
+
         }
         System.out.println("Reporte final: mejor heuristico con lambda: " + lambdaMax + " y k: " + kMax + " estado: " + estadoMax);
     }

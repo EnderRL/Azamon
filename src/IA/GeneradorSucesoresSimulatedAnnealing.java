@@ -2,6 +2,7 @@ package IA;
 
 import IA.Azamon.Oferta;
 import IA.Azamon.Paquete;
+import aima.search.framework.HeuristicFunction;
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
 import aima.util.Pair;
@@ -84,7 +85,6 @@ public class GeneradorSucesoresSimulatedAnnealing implements SuccessorFunction {
                 int oferta = random.nextInt(Estado.getOfertas().size());
                 int paquete = random.nextInt(Estado.getPaquetes().size());
                 if (asignacionPaquetes.get(paquete) != oferta && moverPaquete(paquete, oferta)) {
-                    action += "He movido el paquete " + paquete + " a la oferta " + oferta + "\n";
                     nextEstado = new Estado(asignacionPaquetes,pesoOfertas,felicidad,precio);
                     success = true;
                 }
@@ -94,13 +94,12 @@ public class GeneradorSucesoresSimulatedAnnealing implements SuccessorFunction {
                 int paquete1 = random.nextInt(Estado.getPaquetes().size());
                 int paquete2 = random.nextInt(Estado.getPaquetes().size());
                 if (!asignacionPaquetes.get(paquete1).equals(asignacionPaquetes.get(paquete2)) && intercambiaPaquete(paquete1, paquete2)) {
-                    action += "He intercambiado el paquete " + paquete1+ " con el paquete " + paquete2 + "\n";
                     nextEstado = new Estado(asignacionPaquetes,pesoOfertas,felicidad,precio);
                     success = true;
                 }
             }
         }
-        action += nextEstado.toString();
+        action += new FuncionHeuristica().getHeuristicValue(nextEstado);
         sucesores.add(new Successor(action, nextEstado));
         return sucesores;
     }
