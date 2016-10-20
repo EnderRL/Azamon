@@ -5,13 +5,7 @@ import IA.Azamon.Transporte;
 import aima.search.framework.Problem;
 import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
-import aima.search.informed.SimulatedAnnealingSearch;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.rmi.server.ExportException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.Random;
@@ -20,6 +14,9 @@ public class MainExperimento2 {
     public static void main(String[] argv) {
 
         Random rand = new Random(Parametros.seed);
+        Escritor escritor = new Escritor("resultadosExperimento2.txt");
+        escritor.write("Ord Rand\n");
+
         for (int i = 0; i < 10; ++i) {
             int semilla = rand.nextInt();
             if (i != 0) System.out.println("-----------------------------------------------------");
@@ -34,13 +31,7 @@ public class MainExperimento2 {
             SearchAgent agent;
             Estado estadoFinal;
 
-            try {
-                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(new File("resultadosExperimento2,txt")));
-                bufferedWriter.write("Rand\tOrd");
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
+
 
             //ORDENADO
             Estado estadoInicialOrdenado = new Estado();
@@ -53,13 +44,14 @@ public class MainExperimento2 {
                 estadoFinal = (Estado) hillClimbingSearch.getGoalState();
                 System.out.println("Finished Hill Climbing");
                 //System.out.println(estadoFinal);
-                System.out.println("Ordenado: precio " + estadoFinal.getPrecio());
+                System.out.println("PRECIO ORDENADO " + estadoFinal.getPrecio());
+                escritor.write(estadoFinal.getPrecio() + " ");
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
             //RANDOM
-            float mediaPrecio = 0;
+            double mediaPrecio = 0;
 
             for (int j = 0; j < 5; ++j) {
                 Estado estadoInicialRandom = new Estado((int) System.nanoTime());
@@ -73,15 +65,18 @@ public class MainExperimento2 {
                     System.out.println("Finished Hill Climbing");
                     //System.out.println(estadoFinal);
                     //System.out.println("Random (iteracion " + j + "): felicidad: " + estadoFinal.getFelicidad() + ", precio " + estadoFinal.getPrecio());
+                    System.out.println("HEY! Estoy sumando " + estadoFinal.getPrecio());
                     mediaPrecio += estadoFinal.getPrecio();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
             mediaPrecio = mediaPrecio/5;
-            System.out.println("Random: precio " + mediaPrecio);
-
+            System.out.println("PRECIO RANDOM " + mediaPrecio);
+            escritor.write(mediaPrecio + "\n");
         }
+        escritor.close();
+
     }
     private static void printInstrumentation(Properties properties) {
         Iterator keys = properties.keySet().iterator();

@@ -181,7 +181,7 @@ public class Estado {
     }
 
     public double getPrecio() {
-        return precio;
+        return ((double)Math.round((precio*100))/100);
     }
 
     public ArrayList<Integer> getAsignacionPaquetes() {

@@ -29,7 +29,7 @@ public class GeneradorSucesoresHillClimbing implements SuccessorFunction {
             //ACTUALIZA FELICIDAD
             felicidad = felicidad - Estado.calculaFelicidad(indiceOfertaActual,paquete) + Estado.calculaFelicidad(indiceOferta,paquete);
             //ACTUALIZA PRECIO
-            precio = precio - Estado.calculaPrecio(indiceOfertaActual,paquete) + Estado.calculaPrecio(indiceOferta,paquete);
+            precio = estadoPadre.getPrecio() - Estado.calculaPrecio(indiceOfertaActual,paquete) + Estado.calculaPrecio(indiceOferta,paquete);
             return true;
         }
         return false;
@@ -53,7 +53,7 @@ public class GeneradorSucesoresHillClimbing implements SuccessorFunction {
             //ACTUALIZA FELICIDAD
             felicidad = felicidad - Estado.calculaFelicidad(indiceOferta1,paquete1) + Estado.calculaFelicidad(indiceOferta2,paquete1)  - Estado.calculaFelicidad(indiceOferta2,paquete2) + Estado.calculaFelicidad(indiceOferta1,paquete2);
             //ACTUALIZA PRECIO
-            precio = precio - Estado.calculaPrecio(indiceOferta1,paquete1) + Estado.calculaPrecio(indiceOferta2,paquete1) - Estado.calculaPrecio(indiceOferta2,paquete2) + Estado.calculaPrecio(indiceOferta1,paquete2);
+            precio = estadoPadre.getPrecio() - Estado.calculaPrecio(indiceOferta1,paquete1) + Estado.calculaPrecio(indiceOferta2,paquete1) - Estado.calculaPrecio(indiceOferta2,paquete2) + Estado.calculaPrecio(indiceOferta1,paquete2);
 
             return true;
         }
