@@ -2,6 +2,7 @@ package aima.search.informed;
 
 import java.util.List;
 
+import IA.Estado;
 import aima.search.framework.Node;
 import aima.search.framework.NodeExpander;
 import aima.search.framework.Problem;
@@ -22,11 +23,11 @@ public class HillClimbingSearch extends NodeExpander implements Search {
 		while (true) {
 			List children = expandNode(current, p);
 			neighbor = getHighestValuedNodeFrom(children, p);
-			//System.out.println("Iterando " + neighbor.getState() + "\n" + current.getState());
+			//System.out.println("Iterando " + ((Estado)current.getState()).getPrecio());
 			if ((neighbor == null)
 					|| (getValue(neighbor, p) <= getValue(current, p))) {
-                                goalState=current.getState();
-                                lastNode=current;
+                                goalState = current.getState();
+
 				return SearchUtils.actionsFromNodes(current.getPathFromRoot());
 			}
 			current = neighbor;
