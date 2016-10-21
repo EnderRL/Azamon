@@ -60,10 +60,12 @@ public class Main {
             System.out.println("Finished Simulated Annealing");
             System.out.println("Simulated Annealing: felicidad: " + estadoFinal.getFelicidad() + ", precio " + estadoFinal.getPrecio());
             System.out.println("Starting Hill Climbing");
+            long time = System.nanoTime();
             agent = new SearchAgent(problemHP, hillClimbingSearch);
+            time = System.nanoTime()-time;
             estadoFinal = (Estado)hillClimbingSearch.getGoalState();
             System.out.println("Finished Hill Climbing");
-            System.out.println("Hill climbing: felicidad: " + estadoFinal.getFelicidad() + ", precio " + estadoFinal.getPrecio());
+            System.out.println("Hill climbing: felicidad: " + estadoFinal.getFelicidad() + ", precio " + estadoFinal.getPrecio() + ", tiempo " + Math.round(time/1000000));
             //System.out.println(estadoFinal);
 
             System.out.println("HEURISTICO FELICIDAD");
