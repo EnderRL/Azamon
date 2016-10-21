@@ -7,7 +7,7 @@ public class FuncionHeuristica implements HeuristicFunction {
     @Override
     public double getHeuristicValue(Object n) {
         Estado estado =(Estado) n;
-        double heuristico = estado.getPrecio() - estado.getFelicidad()*10;
+        double heuristico = ((double)Math.round((((Estado)estado).getPrecio()*1000))/1000) - estado.getFelicidad()*10;
         return heuristico;
     }
 }

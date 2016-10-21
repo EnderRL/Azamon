@@ -15,7 +15,7 @@ public class MainExperimento2 {
 
         Random rand = new Random(Parametros.seed);
         Escritor escritor = new Escritor("resultadosExperimento2.txt");
-        escritor.write("Ord Rand\n");
+        escritor.write("Ord sol\tOrd pas\tOrd tp\tRand sol\tRand pas\tRand tp\n");
 
         for (int i = 0; i < 10; ++i) {
             int semilla = rand.nextInt();
@@ -40,18 +40,24 @@ public class MainExperimento2 {
             try {
                 System.out.println("ORDENADO");
                 System.out.println("Starting Hill Climbing");
+                long time = System.nanoTime();
                 agent = new SearchAgent(problemHOrdenado, hillClimbingSearch);
+                time = System.nanoTime()-time;
                 estadoFinal = (Estado) hillClimbingSearch.getGoalState();
                 System.out.println("Finished Hill Climbing");
                 //System.out.println(estadoFinal);
-                System.out.println("PRECIO ORDENADO " + estadoFinal.getPrecio());
-                escritor.write(estadoFinal.getPrecio() + " ");
+                String key = (String) agent.getInstrumentation().keySet().iterator().next();
+                String property = agent.getInstrumentation().getProperty(key);
+                System.out.println("PRECIO ORDENADO " + estadoFinal.getPrecio() + " " + property);
+                escritor.write(estadoFinal.getPrecio() + "\t" + property + "\t" + Math.round(time/1000000) + "\t");
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
             //RANDOM
             double mediaPrecio = 0;
+            long tiempoTotal = 0;
+            int pasosTotal = 0;
 
             for (int j = 0; j < 5; ++j) {
                 Estado estadoInicialRandom = new Estado((int) System.nanoTime());
@@ -60,20 +66,26 @@ public class MainExperimento2 {
                 try {
                     System.out.println("RANDOM " + j);
                     System.out.println("Starting Hill Climbing");
+                    long timePrueba = System.nanoTime();
                     agent = new SearchAgent(problemHRandom, hillClimbingSearch);
+                    tiempoTotal += System.nanoTime()-timePrueba;
                     estadoFinal = (Estado) hillClimbingSearch.getGoalState();
                     System.out.println("Finished Hill Climbing");
                     //System.out.println(estadoFinal);
                     //System.out.println("Random (iteracion " + j + "): felicidad: " + estadoFinal.getFelicidad() + ", precio " + estadoFinal.getPrecio());
-                    System.out.println("HEY! Estoy sumando " + estadoFinal.getPrecio());
                     mediaPrecio += estadoFinal.getPrecio();
+                    String key = (String) agent.getInstrumentation().keySet().iterator().next();
+                    String property = agent.getInstrumentation().getProperty(key);
+                    pasosTotal += Integer.parseInt(property);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
             mediaPrecio = mediaPrecio/5;
+            double mediaTiempo = tiempoTotal/5;
+            double mediaPasos = pasosTotal/5;
             System.out.println("PRECIO RANDOM " + mediaPrecio);
-            escritor.write(mediaPrecio + "\n");
+            escritor.write(mediaPrecio + "\t" + mediaPasos + "\t" + Math.round(mediaTiempo/1000000) + "\n");
         }
         escritor.close();
 

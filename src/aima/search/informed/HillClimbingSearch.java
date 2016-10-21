@@ -23,7 +23,6 @@ public class HillClimbingSearch extends NodeExpander implements Search {
 		while (true) {
 			List children = expandNode(current, p);
 			neighbor = getHighestValuedNodeFrom(children, p);
-			//System.out.println("Iterando " + ((Estado)current.getState()).getPrecio());
 			if ((neighbor == null)
 					|| (getValue(neighbor, p) <= getValue(current, p))) {
                                 goalState = current.getState();

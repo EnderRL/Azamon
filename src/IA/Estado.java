@@ -100,25 +100,16 @@ public class Estado {
         for(int i = 0; i < ofertasOrdenadas.size();++i){
             Oferta oferta = ofertasOrdenadas.get(i).getOferta();
             int indiceOferta =  ofertasOrdenadas.get(i).getIndice();
-            //System.out.println("Analizando oferta " + indiceOferta + " " + oferta);
             for (int j = 0; j < paquetes.size(); ++j) {
                 Paquete paquete = paquetesOrdenados.get(j).getPaquete();
                 int indicePaquete = paquetesOrdenados.get(j).getIndice();
-                //System.out.println("Analizando paquete " + indicePaquete + " " + paquete);
                 if (calculaDias(paquete.getPrioridad(), oferta.getDias()) && oferta.getPesomax() >= pesoOfertas.get(indiceOferta)+paquete.getPeso() && !arrayBool.get(indicePaquete)) {
-                    //System.out.println("He acertado");
                     arrayBool.set(indicePaquete, true);
                     asignacionPaquetes.set(indicePaquete, indiceOferta);
                     pesoOfertas.set(indiceOferta, pesoOfertas.get(indiceOferta) + paquete.getPeso());
                     precio += calculaPrecio(indiceOferta, paquete);
                     felicidad += calculaFelicidad(indiceOferta, paquete);
                 }
-                /*else{
-                    System.out.print("He fallado porque ");
-                    if (oferta.getPesomax() < pesoOfertas.get(indiceOferta)+paquete.getPeso()) System.out.println("pesa demasiado");
-                    else if (!calculaDias(paquete.getPrioridad(), oferta.getDias())) System.out.println("tarda demasiado");
-                    else System.out.println("ya estaba puesto");
-                }*/
             }
         }
         for(int i = 0; i< asignacionPaquetes.size();++i){
@@ -181,7 +172,7 @@ public class Estado {
     }
 
     public double getPrecio() {
-        return ((double)Math.round((precio*100))/100);
+        return precio;
     }
 
     public ArrayList<Integer> getAsignacionPaquetes() {
