@@ -49,7 +49,7 @@ public class MainExperimento2 {
                 String key = (String) agent.getInstrumentation().keySet().iterator().next();
                 String property = agent.getInstrumentation().getProperty(key);
                 System.out.println("PRECIO ORDENADO " + estadoFinal.getPrecio() + " " + property);
-                escritor.write(estadoFinal.getPrecio() + "\t" + property + "\t" + Math.round(time/1000000) + "\t");
+                escritor.write(estadoFinal.getPrecio() + " " + property + " " + Math.round(time/1000000) + " ");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -85,7 +85,7 @@ public class MainExperimento2 {
             double mediaTiempo = tiempoTotal/5;
             double mediaPasos = pasosTotal/5;
             System.out.println("PRECIO RANDOM " + mediaPrecio);
-            escritor.write(mediaPrecio + "\t" + mediaPasos + "\t" + Math.round(mediaTiempo/1000000) + "\n");
+            escritor.write(mediaPrecio + " " + mediaPasos + " " + Math.round(mediaTiempo/1000000) + "\n");
         }
         escritor.close();
 
