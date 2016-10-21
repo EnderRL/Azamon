@@ -1,4 +1,4 @@
-Ord sol	Ord pas	Ord tp	Rand sol	Rand pas	Rand tp
+Ordsol Ordpas Ordtp Randsol Randpas Randtp
 963.4 57 195 963.2529999999995 49.0 131
 996.3700000000006 61 132 996.1869999999999 48.0 106
 859.5199999999993 48 71 859.5199999999993 47.0 99
@@ -9,3 +9,6 @@ Ord sol	Ord pas	Ord tp	Rand sol	Rand pas	Rand tp
 984.0400000000001 64 90 984.0470000000003 46.0 91
 985.9249999999997 61 69 985.9350000000001 46.0 47
 1057.235 60 75 1057.4479999999996 48.0 110
+
+data = read.table("F:/Assignaturas/IA/Practica 1/algosuperrandomquejamasencontrareisbitches/resultadosExperimento2.txt",header=T)
+t.test(data[[2]],data[[5]])
