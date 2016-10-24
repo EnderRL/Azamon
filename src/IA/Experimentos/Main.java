@@ -1,15 +1,20 @@
-package IA;
+package IA.Experimentos;
 
 import IA.Azamon.Paquetes;
 import IA.Azamon.Transporte;
-import aima.search.framework.GoalTest;
+import IA.Estado;
+import IA.Heuristicos.FuncionHeuristica;
+import IA.Heuristicos.FuncionHeuristicaFelicidad;
+import IA.Heuristicos.FuncionHeuristicaPrecio;
+import IA.Generadores.GeneradorSucesoresHillClimbing;
+import IA.Generadores.GeneradorSucesoresSimulatedAnnealing;
+import IA.Utils.Parametros;
 import aima.search.framework.Problem;
 import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
 import aima.search.informed.SimulatedAnnealingSearch;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Properties;
 
 public class Main {

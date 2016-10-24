@@ -1,7 +1,12 @@
-package IA;
+package IA.Experimentos;
 
 import IA.Azamon.Paquetes;
 import IA.Azamon.Transporte;
+import IA.Estado;
+import IA.Heuristicos.FuncionHeuristicaPrecio;
+import IA.Generadores.GeneradorSucesoresHillClimbing;
+import IA.Utils.Escritor;
+import IA.Utils.Parametros;
 import aima.search.framework.Problem;
 import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;

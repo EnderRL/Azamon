@@ -1,7 +1,12 @@
-package IA;
+package IA.Experimentos;
 
 import IA.Azamon.Paquetes;
 import IA.Azamon.Transporte;
+import IA.Estado;
+import IA.Heuristicos.FuncionHeuristicaPrecio;
+import IA.Generadores.GeneradorSucesoresHillClimbing;
+import IA.Generadores.GeneradorSucesoresMover;
+import IA.Utils.Escritor;
 import aima.search.framework.Problem;
 import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
@@ -10,7 +15,7 @@ public class MainExperimental1 {
     public static void main(String[] argv) {
         Escritor escritor = new Escritor("resultadosExperimento1.txt");
         escritor.write("MovPrecio MovPasos MovTiempo MovIntPrecio MovIntPasos MovIntTiempo\n");
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < 25; ++i) {
             System.out.println("ESTO ES EL INICIO DE GLA2, que dominará el mundo");
             System.out.println("Creando paquetes. :D");
             Paquetes paquetes = new Paquetes(100, (int)System.nanoTime());

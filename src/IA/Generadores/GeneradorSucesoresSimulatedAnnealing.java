@@ -1,7 +1,8 @@
-package IA;
+package IA.Generadores;
 
 import IA.Azamon.Oferta;
 import IA.Azamon.Paquete;
+import IA.Estado;
 import aima.search.framework.HeuristicFunction;
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;

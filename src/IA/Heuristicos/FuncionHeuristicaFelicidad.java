@@ -1,5 +1,6 @@
-package IA;
+package IA.Heuristicos;
 
+import IA.Estado;
 import aima.search.framework.HeuristicFunction;
 
 public class FuncionHeuristicaFelicidad implements HeuristicFunction {

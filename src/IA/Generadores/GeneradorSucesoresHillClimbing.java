@@ -1,7 +1,8 @@
-package IA;
+package IA.Generadores;
 
 import IA.Azamon.Oferta;
 import IA.Azamon.Paquete;
+import IA.Estado;
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class GeneradorSucesoresHillClimbing implements SuccessorFunction {
             asignacionPaquetes.set(indicePaquete1, indiceOferta2);
             asignacionPaquetes.set(indicePaquete2, indiceOferta1);
             //ACTUALIZA FELICIDAD
-            felicidad = felicidad - Estado.calculaFelicidad(indiceOferta1,paquete1) + Estado.calculaFelicidad(indiceOferta2,paquete1)  - Estado.calculaFelicidad(indiceOferta2,paquete2) + Estado.calculaFelicidad(indiceOferta1,paquete2);
+            felicidad = estadoPadre.getFelicidad() - Estado.calculaFelicidad(indiceOferta1,paquete1) + Estado.calculaFelicidad(indiceOferta2,paquete1)  - Estado.calculaFelicidad(indiceOferta2,paquete2) + Estado.calculaFelicidad(indiceOferta1,paquete2);
             //ACTUALIZA PRECIO
             precio = estadoPadre.getPrecio() - Estado.calculaPrecio(indiceOferta1,paquete1) + Estado.calculaPrecio(indiceOferta2,paquete1) - Estado.calculaPrecio(indiceOferta2,paquete2) + Estado.calculaPrecio(indiceOferta1,paquete2);
 
