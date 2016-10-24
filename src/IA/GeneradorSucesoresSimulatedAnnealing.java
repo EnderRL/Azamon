@@ -78,7 +78,6 @@ public class GeneradorSucesoresSimulatedAnnealing implements SuccessorFunction {
         LinkedList<Successor> sucesores = new LinkedList<>();
         boolean success = false;
         Estado nextEstado = null;
-        String action = "";
         while (!success) {
             if (random.nextInt(2) == 0) {
                 //OPERADOR MOVER
@@ -99,8 +98,7 @@ public class GeneradorSucesoresSimulatedAnnealing implements SuccessorFunction {
                 }
             }
         }
-        action += new FuncionHeuristica().getHeuristicValue(nextEstado);
-        sucesores.add(new Successor(action, nextEstado));
+        sucesores.add(new Successor("", nextEstado));
         return sucesores;
     }
 }

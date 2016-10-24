@@ -75,7 +75,7 @@ public class GeneradorSucesoresHillClimbing implements SuccessorFunction {
                 int indiceOfertaPaquete2 = asignacionPaquetes.get(j);
                 if (indiceOfertaPaquete1 != indiceOfertaPaquete2) {
                     if (intercambiaPaquete(i, j)) {
-                        sucesores.add(new Successor("He intercambiado el paquete " + i + " con el paquete " + j,new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio)));
+                        sucesores.add(new Successor("", new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio)));
                         intercambiaPaquete(j, i);
                     }
                 }
@@ -87,7 +87,7 @@ public class GeneradorSucesoresHillClimbing implements SuccessorFunction {
             for (int j = 0; j < Estado.getOfertas().size(); ++j) {
                 if (j != ofertaPaqueteActual) {
                     if (moverPaquete(i, j)) {
-                        sucesores.add(new Successor("He movido el paquete " + i + " a la oferta " + j,new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio)));
+                        sucesores.add(new Successor("", new Estado((ArrayList<Integer>)asignacionPaquetes.clone(),(ArrayList< Double>)pesoOfertas.clone(),felicidad,precio)));
                         moverPaquete(i,ofertaPaqueteActual);
                     }
                 }

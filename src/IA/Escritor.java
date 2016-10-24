@@ -21,7 +21,6 @@ public class Escritor {
 
     public boolean write(String s) {
         try {
-            System.out.println("HOLA ESTOY AQUI " + s);
             bufferedWriter.write(s);
             return true;
         }
