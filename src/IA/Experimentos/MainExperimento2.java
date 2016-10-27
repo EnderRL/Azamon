@@ -3,6 +3,7 @@ package IA.Experimentos;
 import IA.Azamon.Paquetes;
 import IA.Azamon.Transporte;
 import IA.Estado;
+import IA.Generadores.GeneradorSucesoresMover;
 import IA.Heuristicos.FuncionHeuristicaPrecio;
 import IA.Generadores.GeneradorSucesoresHillClimbing;
 import IA.Utils.Escritor;
@@ -20,9 +21,9 @@ public class MainExperimento2 {
 
         Random rand = new Random(Parametros.seed);
         Escritor escritor = new Escritor("resultadosExperimento2.txt");
-        escritor.write("Ord sol\tOrd pas\tOrd tp\tRand sol\tRand pas\tRand tp\n");
+        escritor.write("Ordsol Ordpas Ordtp Randsol Randpas Randtp\n");
 
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < 25; ++i) {
             int semilla = rand.nextInt();
             if (i != 0) System.out.println("-----------------------------------------------------");
             System.out.println("SEMILLA " + semilla +  ":");
@@ -30,8 +31,7 @@ public class MainExperimento2 {
             Transporte ofertas = new Transporte(paquetes, 1.2,semilla);
             Estado.setOfertas(ofertas);
             Estado.setPaquetes(paquetes);
-
-            GeneradorSucesoresHillClimbing generadorSucesoresHillClimbing = new GeneradorSucesoresHillClimbing();
+            GeneradorSucesoresMover generadorSucesoresMover = new GeneradorSucesoresMover();
             HillClimbingSearch hillClimbingSearch = new HillClimbingSearch();
             SearchAgent agent;
             Estado estadoFinal;
@@ -40,7 +40,7 @@ public class MainExperimento2 {
 
             //ORDENADO
             Estado estadoInicialOrdenado = new Estado();
-            Problem problemHOrdenado = new Problem(estadoInicialOrdenado, generadorSucesoresHillClimbing, state -> true, new FuncionHeuristicaPrecio());
+            Problem problemHOrdenado = new Problem(estadoInicialOrdenado, generadorSucesoresMover, state -> true, new FuncionHeuristicaPrecio());
             System.out.println("Estado inicial ordenado: felicidad " + estadoInicialOrdenado.getFelicidad() + ", precio " + estadoInicialOrdenado.getPrecio());
             try {
                 System.out.println("ORDENADO");
@@ -66,7 +66,7 @@ public class MainExperimento2 {
 
             for (int j = 0; j < 5; ++j) {
                 Estado estadoInicialRandom = new Estado((int) System.nanoTime());
-                Problem problemHRandom = new Problem(estadoInicialRandom, generadorSucesoresHillClimbing, state -> true, new FuncionHeuristicaPrecio());
+                Problem problemHRandom = new Problem(estadoInicialRandom, generadorSucesoresMover, state -> true, new FuncionHeuristicaPrecio());
                 System.out.println("Estado inicial random (iteracion " + j + "): felicidad " + estadoInicialRandom.getFelicidad() + ", precio " + estadoInicialRandom.getPrecio());
                 try {
                     System.out.println("RANDOM " + j);
