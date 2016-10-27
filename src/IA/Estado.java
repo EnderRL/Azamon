@@ -136,8 +136,7 @@ public class Estado {
             if (comparacion == 0) return Integer.compare(o1.getIndice(), o2.getIndice());
             return comparacion;
         });
-        if (metePaquete(0, random, paquetesOrdenados)) System.out.println("Success");
-        else System.out.println("Failure");
+        if (!metePaquete(0, random, paquetesOrdenados)) System.out.println("Failure");
     }
 
     public Estado() {
