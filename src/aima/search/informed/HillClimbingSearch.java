@@ -3,6 +3,7 @@ package aima.search.informed;
 import java.util.List;
 
 import IA.Estado;
+import IA.Heuristicos.FuncionHeuristica;
 import aima.search.framework.Node;
 import aima.search.framework.NodeExpander;
 import aima.search.framework.Problem;
@@ -49,6 +50,7 @@ public class HillClimbingSearch extends NodeExpander implements Search {
 				nodeWithHighestValue = child;
 			}
 		}
+
 		return nodeWithHighestValue;
 	}
 

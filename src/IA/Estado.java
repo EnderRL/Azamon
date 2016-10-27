@@ -56,15 +56,16 @@ public class Estado {
         precioPaquete += ofertas.get(numeroOferta).getPrecio()*p.getPeso();
         return precioPaquete;
     }
-
+    //TODO: Fix Hill Climbing plz
     public static int calculaFelicidad(int numeroOferta, Paquete p) {
         int felicidad = 0;
         if (p.getPrioridad() == Paquete.PR2) {
-            felicidad = 3-ofertas.get(numeroOferta).getDias();
+            felicidad = 2-ofertas.get(numeroOferta).getDias();
         }
         else if (p.getPrioridad() == Paquete.PR3) {
-            felicidad = 5-ofertas.get(numeroOferta).getDias();
+            felicidad = 4-ofertas.get(numeroOferta).getDias();
         }
+        if (felicidad < 0) felicidad = 0;
         return felicidad;
     }
 

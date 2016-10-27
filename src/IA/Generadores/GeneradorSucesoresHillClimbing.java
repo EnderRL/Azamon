@@ -28,7 +28,7 @@ public class GeneradorSucesoresHillClimbing implements SuccessorFunction {
             pesoOfertas.set(indiceOferta, pesoOfertas.get(indiceOferta) + paquete.getPeso());
             asignacionPaquetes.set(indicePaquete, indiceOferta);
             //ACTUALIZA FELICIDAD
-            felicidad = felicidad - Estado.calculaFelicidad(indiceOfertaActual,paquete) + Estado.calculaFelicidad(indiceOferta,paquete);
+            felicidad = estadoPadre.getFelicidad() - Estado.calculaFelicidad(indiceOfertaActual,paquete) + Estado.calculaFelicidad(indiceOferta,paquete);
             //ACTUALIZA PRECIO
             precio = estadoPadre.getPrecio() - Estado.calculaPrecio(indiceOfertaActual,paquete) + Estado.calculaPrecio(indiceOferta,paquete);
             return true;

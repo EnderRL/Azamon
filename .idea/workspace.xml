@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="caa9675a-7290-434e-b329-864c9ab4f053" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resultadosExperimento3.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resultadosExperimento3b.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resultadosExperimento3c.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IA/Experimentos/MainExperimento3b.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IA/Experimentos/MainExperimento3c.java" />
+    <list default="true" id="caa9675a-7290-434e-b329-864c9ab4f053" name="Default" comment="Funciona yeah">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resultadosExperimento6.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resultadosExperimento7.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IA/Experimentos/MainExperimental6.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IA/Experimentos/MainExperimental7.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resultadosExperimento1b.txt" afterPath="$PROJECT_DIR$/resultadosExperimento1b.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IA/Experimentos/MainExperimento3.java" afterPath="$PROJECT_DIR$/src/IA/Experimentos/MainExperimento3.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IA/Estado.java" afterPath="$PROJECT_DIR$/src/IA/Estado.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IA/Generadores/GeneradorSucesoresHillClimbing.java" afterPath="$PROJECT_DIR$/src/IA/Generadores/GeneradorSucesoresHillClimbing.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/IA/Heuristicos/FuncionHeuristica.java" afterPath="$PROJECT_DIR$/src/IA/Heuristicos/FuncionHeuristica.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/aima/search/informed/HillClimbingSearch.java" afterPath="$PROJECT_DIR$/src/aima/search/informed/HillClimbingSearch.java" />
     </list>
     <ignored path="GLaDOS 2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,11 +33,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="FuncionHeuristica.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IA/Heuristicos/FuncionHeuristica.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+              <folding>
+                <element signature="e#224#225#0" expanded="true" />
+                <element signature="e#265#266#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MainExperimento3c.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/IA/Experimentos/MainExperimento3c.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+              <caret line="30" column="154" selection-start-line="30" selection-start-column="154" selection-end-line="30" selection-end-column="154" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainExperimental7.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IA/Experimentos/MainExperimental7.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.1034484">
+              <caret line="29" column="92" selection-start-line="29" selection-start-column="92" selection-end-line="29" selection-end-column="92" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resultadosExperimento7.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resultadosExperimento7.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="25" column="45" selection-start-line="0" selection-start-column="0" selection-end-line="25" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -45,8 +79,18 @@
       <file leaf-file-name="resultadosExperimento3c.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resultadosExperimento3c.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27859777">
+            <state vertical-scroll-proportion="2.7214022">
               <caret line="505" column="24" selection-start-line="505" selection-start-column="24" selection-end-line="505" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resultadosExperimento6.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resultadosExperimento6.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -58,6 +102,21 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="39" column="36" selection-start-line="39" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Estado.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IA/Estado.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
+              <folding>
+                <element signature="e#7586#7587#0" expanded="true" />
+                <element signature="e#7627#7628#0" expanded="true" />
+                <element signature="e#7676#7677#0" expanded="true" />
+                <element signature="e#7710#7711#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,7 +166,6 @@
         <option value="$PROJECT_DIR$/src/aima/basic/Util.java" />
         <option value="$PROJECT_DIR$/src/IA/MainExperimental.java" />
         <option value="$PROJECT_DIR$/src/IA/MainExperimentoSA.java" />
-        <option value="$PROJECT_DIR$/src/IA/Estado.java" />
         <option value="$PROJECT_DIR$/src/IA/FuncionHeuristica.java" />
         <option value="$PROJECT_DIR$/src/IA/FuncionHeuristicaPrecio.java" />
         <option value="$PROJECT_DIR$/src/aima/search/informed/HillClimbingSearch.java" />
@@ -136,7 +194,10 @@
         <option value="$PROJECT_DIR$/resultadosExperimento3b.txt" />
         <option value="$PROJECT_DIR$/src/IA/Experimentos/MainExperimento3b.java" />
         <option value="$PROJECT_DIR$/src/IA/Experimentos/MainExperimento3.java" />
+        <option value="$PROJECT_DIR$/src/IA/Estado.java" />
         <option value="$PROJECT_DIR$/src/IA/Experimentos/MainExperimento3c.java" />
+        <option value="$PROJECT_DIR$/src/IA/Experimentos/MainExperimento7.java" />
+        <option value="$PROJECT_DIR$/src/IA/Experimentos/MainExperimental7.java" />
       </list>
     </option>
   </component>
@@ -171,9 +232,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -223,31 +282,11 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Experimentos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GLaDOS 2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="algosuperrandomquejamasencontrareisbitches" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -260,39 +299,19 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\algosuperrandomquejamasencontrareisbitches\Azamon" />
-      <recent name="F:\algosuperrandomquejamasencontrareisbitches\src" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="IA" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="IA.Experimentos" />
       <recent name="IA" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="IA" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\algosuperrandomquejamasencontrareisbitches\Azamon" />
+      <recent name="F:\algosuperrandomquejamasencontrareisbitches\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainExperimento3c">
-    <configuration default="false" name="MainExperimental1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="IA.Utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="IA.Experimentos.MainExperimental1" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="algosuperrandomquejamasencontrareisbitches" />
-      <envs />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.MainExperimental7">
     <configuration default="false" name="MainExperimental1b" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -361,6 +380,26 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="IA.Experimentos.MainExperimento3c" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="algosuperrandomquejamasencontrareisbitches" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="MainExperimental7" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="IA.Experimentos.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="IA.Experimentos.MainExperimental7" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -612,19 +651,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.MainExperimental1" />
-      <item index="1" class="java.lang.String" itemvalue="Application.MainExperimental1b" />
-      <item index="2" class="java.lang.String" itemvalue="Application.MainExperimento3" />
-      <item index="3" class="java.lang.String" itemvalue="Application.MainExperimento3b" />
-      <item index="4" class="java.lang.String" itemvalue="Application.MainExperimento3c" />
+      <item index="0" class="java.lang.String" itemvalue="Application.MainExperimental1b" />
+      <item index="1" class="java.lang.String" itemvalue="Application.MainExperimento3" />
+      <item index="2" class="java.lang.String" itemvalue="Application.MainExperimento3b" />
+      <item index="3" class="java.lang.String" itemvalue="Application.MainExperimento3c" />
+      <item index="4" class="java.lang.String" itemvalue="Application.MainExperimental7" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.MainExperimento3c" />
-        <item index="1" class="java.lang.String" itemvalue="Application.MainExperimento3" />
-        <item index="2" class="java.lang.String" itemvalue="Application.MainExperimento3b" />
-        <item index="3" class="java.lang.String" itemvalue="Application.MainExperimental1b" />
-        <item index="4" class="java.lang.String" itemvalue="Application.MainExperimental1" />
+        <item index="0" class="java.lang.String" itemvalue="Application.MainExperimental7" />
+        <item index="1" class="java.lang.String" itemvalue="Application.MainExperimento3c" />
+        <item index="2" class="java.lang.String" itemvalue="Application.MainExperimento3" />
+        <item index="3" class="java.lang.String" itemvalue="Application.MainExperimento3b" />
+        <item index="4" class="java.lang.String" itemvalue="Application.MainExperimental1b" />
       </list>
     </recent_temporary>
   </component>
@@ -824,8 +863,8 @@
     <option name="totallyTimeSpent" value="10152000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -837,7 +876,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36026937" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21171875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21171875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -885,13 +924,26 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/resultadosExperimento3c.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IA/Experimentos/MainExperimento3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="36" selection-start-line="39" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/IA/Experimentos/MainExperimental4.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -899,7 +951,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1050,13 +1101,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IA/Heuristicos/FuncionHeuristica.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="88" selection-start-line="10" selection-start-column="88" selection-end-line="10" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resultadosExperimento2.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1071,39 +1115,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IA/Estado.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="197" column="0" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
-          <caret line="196" column="5" selection-start-line="196" selection-start-column="5" selection-end-line="196" selection-end-column="5" />
-          <caret line="195" column="17" selection-start-line="195" selection-start-column="17" selection-end-line="195" selection-end-column="17" />
-          <caret line="194" column="9" selection-start-line="194" selection-start-column="9" selection-end-line="194" selection-end-column="9" />
-          <caret line="193" column="13" selection-start-line="193" selection-start-column="13" selection-end-line="193" selection-end-column="13" />
-          <caret line="192" column="50" selection-start-line="192" selection-start-column="50" selection-end-line="192" selection-end-column="50" />
-          <caret line="191" column="50" selection-start-line="191" selection-start-column="50" selection-end-line="191" selection-end-column="50" />
-          <caret line="190" column="50" selection-start-line="190" selection-start-column="50" selection-end-line="190" selection-end-column="50" />
-          <caret line="189" column="50" selection-start-line="189" selection-start-column="50" selection-end-line="189" selection-end-column="50" />
-          <caret line="188" column="50" selection-start-line="188" selection-start-column="50" selection-end-line="188" selection-end-column="50" />
-          <caret line="187" column="22" selection-start-line="187" selection-start-column="22" selection-end-line="187" selection-end-column="22" />
-          <caret line="186" column="30" selection-start-line="186" selection-start-column="30" selection-end-line="186" selection-end-column="30" />
-          <caret line="185" column="13" selection-start-line="185" selection-start-column="13" selection-end-line="185" selection-end-column="13" />
-          <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
-          <caret line="183" column="5" selection-start-line="183" selection-start-column="5" selection-end-line="183" selection-end-column="5" />
-          <caret line="182" column="27" selection-start-line="182" selection-start-column="27" selection-end-line="182" selection-end-column="27" />
-          <caret line="181" column="47" selection-start-line="181" selection-start-column="47" selection-end-line="181" selection-end-column="47" />
-          <caret line="180" column="0" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
-          <folding>
-            <element signature="e#7601#7602#0" expanded="true" />
-            <element signature="e#7635#7636#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/IA/Utils/Parametros.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1190,7 +1205,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1198,7 +1212,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="126" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1206,7 +1219,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="151" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1214,9 +1226,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9723247">
           <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1228,17 +1237,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/IA/Heuristicos/FuncionHeuristica.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+          <folding>
+            <element signature="e#224#225#0" expanded="true" />
+            <element signature="e#265#266#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/IA/Experimentos/MainExperimento3c.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
+          <caret line="30" column="154" selection-start-line="30" selection-start-column="154" selection-end-line="30" selection-end-column="154" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IA/Estado.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
+          <folding>
+            <element signature="e#7586#7587#0" expanded="true" />
+            <element signature="e#7627#7628#0" expanded="true" />
+            <element signature="e#7676#7677#0" expanded="true" />
+            <element signature="e#7710#7711#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resultadosExperimento6.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IA/Experimentos/MainExperimental7.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.1034484">
+          <caret line="29" column="92" selection-start-line="29" selection-start-column="92" selection-end-line="29" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resultadosExperimento7.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="45" selection-start-line="0" selection-start-column="0" selection-end-line="25" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resultadosExperimento3c.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27859777">
+        <state vertical-scroll-proportion="2.7214022">
           <caret line="505" column="24" selection-start-line="505" selection-start-column="24" selection-end-line="505" selection-end-column="24" />
           <folding />
         </state>
