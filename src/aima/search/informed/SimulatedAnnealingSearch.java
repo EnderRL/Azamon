@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import IA.Estado;
 import aima.basic.Util;
 import aima.search.framework.Node;
 import aima.search.framework.NodeExpander;
@@ -26,6 +27,8 @@ public class SimulatedAnnealingSearch extends NodeExpander implements Search {
     private int steps;
     private boolean trace = false;
     private Scheduler scheduler;
+    private ArrayList<Double> costePaso;
+
 
     public SimulatedAnnealingSearch() {
         this.steps = 10000;
@@ -35,11 +38,15 @@ public class SimulatedAnnealingSearch extends NodeExpander implements Search {
     public SimulatedAnnealingSearch(int steps, int stiter, int k, double lamb) {
         this.steps = steps;
         this.scheduler = new Scheduler(k, lamb, stiter);
+        costePaso = new ArrayList<>();
     }
 
     public void traceOn() {
         trace = true;
     }
+
+    public ArrayList<Double> getCostePaso() {return costePaso;}
+
 
     @SuppressWarnings("unchecked")
     public List search(Problem p) throws Exception {
@@ -54,6 +61,7 @@ public class SimulatedAnnealingSearch extends NodeExpander implements Search {
 
         List children = expandNode(current, p);
 
+
         for (int step = 0; step < this.steps; step += 1) {
             double temp = scheduler.getTemp(step);
             if (temp == 0.0) {
@@ -61,6 +69,10 @@ public class SimulatedAnnealingSearch extends NodeExpander implements Search {
             }
             //expansions++;
             //System.out.println("step = "+step+" expansions = "+expansions);
+            if (step%5 == 0) {
+                costePaso.add(step/1.);
+                costePaso.add(((Estado)current.getState()).getPrecio());
+            }
             if (children.size() > 0) {
                 //TODO take care of no possible expansion situation?
                 next = (Node) Util.selectRandomlyFromList(children);

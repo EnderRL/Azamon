@@ -1,5 +1,6 @@
 package aima.search.informed;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import IA.Estado;
@@ -9,6 +10,7 @@ import aima.search.framework.NodeExpander;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchUtils;
+import aima.util.Pair;
 
 /**
  * @author Ravi Mohan
@@ -16,12 +18,19 @@ import aima.search.framework.SearchUtils;
  */
 public class HillClimbingSearch extends NodeExpander implements Search {
  private Object goalState;
+	private ArrayList<Double> costePaso;
  private Node lastNode;
 	public List search(Problem p) throws Exception {
+		costePaso = new ArrayList<Double>();
 		clearInstrumentation();
+		int numpasos = 0;
 		Node current = new Node(p.getInitialState());
 		Node neighbor = null;
 		while (true) {
+			if (numpasos%5 == 0) {
+				costePaso.add(numpasos/1.);
+				costePaso.add(((Estado)current.getState()).getPrecio());
+			}
 			List children = expandNode(current, p);
 			neighbor = getHighestValuedNodeFrom(children, p);
 			if ((neighbor == null)
@@ -31,6 +40,7 @@ public class HillClimbingSearch extends NodeExpander implements Search {
 				return SearchUtils.actionsFromNodes(current.getPathFromRoot());
 			}
 			current = neighbor;
+			++numpasos;
 		}
 
 	}
@@ -38,6 +48,8 @@ public class HillClimbingSearch extends NodeExpander implements Search {
         public Object getGoalState(){
             return(goalState);
         }
+
+	public ArrayList<Double> getCostePaso() {return costePaso;}
         
 	private Node getHighestValuedNodeFrom(List children, Problem p) {
 		double highestValue = Double.NEGATIVE_INFINITY;
