@@ -20,7 +20,7 @@ import java.util.Collections;
 /**
  * Created by mario.fernandez on 27/10/2016.
  */
-public class MainExperimento3DesgloseCostePasos {
+public class MainExperimental3DesgloseCostePasos {
     public static void main(String[] argv) {
 
             Paquetes paquetes = new Paquetes(100, (int) System.nanoTime());
@@ -40,7 +40,7 @@ public class MainExperimento3DesgloseCostePasos {
                 //LAMBDA EN 0.001
                 lambda = 0.001;
                 Escritor escritor;
-                escritor = new Escritor("resultadosExperimento3.txt");
+                escritor = new Escritor("resultadosExperimento3desglose.txt");
                 escritor.write("PASOS PRECIO\n");
 
                 SimulatedAnnealingSearch simulatedAnnealingSearch = new SimulatedAnnealingSearch(10000, 100, k, lambda);

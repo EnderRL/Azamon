@@ -19,7 +19,7 @@ import java.util.Collections;
 /**
  * Created by mario.fernandez on 27/10/2016.
  */
-public class MainExperimento3klambda {
+public class MainExperimental3klambda {
 
     //5 -> 0
     //50 -> 1
@@ -47,7 +47,6 @@ public class MainExperimento3klambda {
             matrix.add(i,vecaux);
         }
         Escritor escritor = new Escritor("resultadosExperimento3klambda.txt");
-        double mediaHC = 0;
 
         for (int i = 0; i < 25; ++i) {
 
@@ -62,7 +61,6 @@ public class MainExperimento3klambda {
 
 
             Problem problem = new Problem(estadoInicial, new GeneradorSucesoresMoverSA((int) System.nanoTime()), state -> true, new FuncionHeuristicaPrecio());
-            Problem problem1 = new Problem(estadoInicial, new GeneradorSucesoresMover(), state -> true, new FuncionHeuristicaPrecio());
             try {
                 //VARIAMOS LAMBDA
                 for (lambda = 0.0001; lambda <= 0.1; lambda *= 10) {
@@ -82,10 +80,7 @@ public class MainExperimento3klambda {
 
                     }
                 }
-                HillClimbingSearch hillClimbingSearch = new HillClimbingSearch();
-                SearchAgent searchAgent = new SearchAgent(problem1,hillClimbingSearch);
-                Estado estadoFinal = (Estado) hillClimbingSearch.getGoalState();
-                mediaHC += estadoFinal.getPrecio();
+
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -101,7 +96,6 @@ public class MainExperimento3klambda {
             }
             escritor.write("\n");
         }
-        escritor.write("Media HC = " + mediaHC/25);
         escritor.close();
     }
 }

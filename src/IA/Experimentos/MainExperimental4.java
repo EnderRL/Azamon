@@ -13,7 +13,7 @@ import aima.search.informed.HillClimbingSearch;
 
 public class MainExperimental4 {
     public static void main(String[] argv) {
-        Escritor escritor = new Escritor("resultadosExperimento.txt");
+        Escritor escritor = new Escritor("resultadosExperimento4.txt");
         escritor.write("Proporción Tiempo NumOfertas Coste\n");
         for (int i = 0; i < 10; ++i) {
             int seed = (int)System.nanoTime();

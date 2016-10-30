@@ -16,7 +16,7 @@ import java.util.Iterator;
 import java.util.Properties;
 import java.util.Random;
 
-public class MainExperimento2 {
+public class MainExperimental2 {
     public static void main(String[] argv) {
 
         Random rand = new Random(Parametros.seed);
