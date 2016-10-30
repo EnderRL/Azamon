@@ -69,7 +69,7 @@ public class SimulatedAnnealingSearch extends NodeExpander implements Search {
             }
             //expansions++;
             //System.out.println("step = "+step+" expansions = "+expansions);
-            if (step%5 == 0) {
+            if (step%50 == 0) {
                 costePaso.add(step/1.);
                 costePaso.add(((Estado)current.getState()).getPrecio());
             }

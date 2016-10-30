@@ -28,7 +28,7 @@ public class MainExperimental7 {
 
             for (int i = 0; i < 25; ++i) {
                 Problem problem = new Problem(estadoInicial, new GeneradorSucesoresMoverSA((int)System.nanoTime()), state -> true, new FuncionHeuristica(ponderacionFelicidad));
-                SimulatedAnnealingSearch simulatedAnnealingSearch = new SimulatedAnnealingSearch(1400,100,5,0.01);
+                SimulatedAnnealingSearch simulatedAnnealingSearch = new SimulatedAnnealingSearch(1400,100,5,0.001);
                 try {
                     int mediaFelicidad = 0;
                     long mediaTiempo = 0;
