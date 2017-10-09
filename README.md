@@ -13,4 +13,4 @@ To solve the organization issues we used the **Simulated Annealing** and the **H
 - In the folder `src\IA\Experimentos` you can find different scenarios in which we ran our algorithms, modifying the different parameters, problems and heuristics. The results of these experiments are located in the `results` folder.
 
 # Documentation
-Documentation of the language is located in `Documentación Azamon.pdf`.
+Documentation is located in `Documentación Azamon.pdf`.
